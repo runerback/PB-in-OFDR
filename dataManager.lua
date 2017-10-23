@@ -5,6 +5,7 @@ onEDXInitialized = function()
 	scripts.mission.waypoints.registerFunction("IsFirstRun")
 	scripts.mission.waypoints.registerFunction("AddOrUpdate")
 	scripts.mission.waypoints.registerFunction("GetOrCreate")
+	scripts.mission.waypoints.registerFunction("Remove")
 	scripts.mission.waypoints.registerFunction("Save")
 	
 	if not data then
@@ -43,6 +44,12 @@ GetOrCreate = function(name)
 		data[name] = {}
 	end
 	return data[name]
+end
+
+Remove = function(name)
+    if data[name] then
+        data[name] = nil
+    end
 end
 
 Save = function()

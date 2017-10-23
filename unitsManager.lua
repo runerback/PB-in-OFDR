@@ -1,8 +1,10 @@
 
-SCRIPT_NAME = "promptManager"
+SCRIPT_NAME = "unitsManager"
 
 onEDXInitialized = function()
-	scripts.mission.waypoints.registerFunction("UNKNOWN")
+	scripts.mission.waypoints.registerFunction("register")
+	scripts.mission.waypoints.registerFunction("filterAI")
+	scripts.mission.waypoints.registerFunction("getPlayers")
 	
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
@@ -15,6 +17,14 @@ end
 
 function register(unitName)
     data["roster"][unitName] = false
+end
+
+function getPlayers()
+    local players = {}
+    for k, _ in data["roster"] do
+        table.insert(players, k)
+    end
+    return players
 end
 
 function filterAI()

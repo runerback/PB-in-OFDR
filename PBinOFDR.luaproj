@@ -24,10 +24,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="damageManager.lua" />
     <Compile Include="dataManager.lua" />
+    <Compile Include="materialManager.lua" />
     <Compile Include="promptManager.lua" />
     <Compile Include="resource.language.lua" />
     <Compile Include="securityZone.lua" />
+    <Compile Include="stage.lua" />
     <Compile Include="unitsManager.lua" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
