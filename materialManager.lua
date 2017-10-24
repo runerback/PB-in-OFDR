@@ -25,7 +25,6 @@ function loadVehicles()
 end
 
 function initializeMaterialMarkers()
-    math.randomseed(os.date())
     OFP:activateEntitySet(data["materialMarkerSetName"])
 end
 
@@ -43,6 +42,7 @@ function onMaterialMarkersReady()
 end
 
 function buildMaterialMap()
+    math.randomseed(os.time())
     local map = {}
     local sets = {}
     

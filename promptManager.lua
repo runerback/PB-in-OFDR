@@ -6,20 +6,26 @@ onEDXInitialized = function()
 	
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
+        data["resource"] = { }
+
+        loadInfos()
 	else
 	end
-    loadInfos() --always reload resource after restart game
 end
 
 --data[language, global_index, resource]
 function loadInfos()
     dofile("./data_win/missions/kmp/pb/resource.language")
-    OFP:showPopup("current language", data[data.language])
-    data["resource"] = data[data.language]
+    OFP:showPopup("current language", lang[lang.language])
+
+    local prompts = lang[lang.language]
+    for name, index in pairs(lang["global_index"]) do
+        data["resource"][name] = prompts[index]
+    end
 end
 
 function prompt(key)
-    return data["resource"][data["global_index"][key]]
+    return data["resource"][key]
 end
 
 

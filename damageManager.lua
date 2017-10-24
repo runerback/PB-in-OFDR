@@ -101,6 +101,7 @@ function damage(unit)
 			return
 		end
 		
+        math.randomseed(os.time())
 		--move to next module
 		if damageStep == 4 then --all hp run out
 			OFP:damage(unit, "chestzone", 10) --kill target

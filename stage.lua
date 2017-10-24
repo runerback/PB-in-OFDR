@@ -16,7 +16,7 @@ onEDXInitialized = function()
 	
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
-        data["playables"] = { --all players here
+        data["playables"] = { --all playables here
             
         }
         data["stageSetName"] = "stageSet"

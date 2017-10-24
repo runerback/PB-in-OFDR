@@ -7,7 +7,7 @@ onEDXInitialized = function()
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
 		data["markersPos"] = { 
-			C = { x = 0, z = 0} --change center here
+			C = { x = 0, z = 0}, --change center here
 			N = { x = 0, z = 0}, --leave other values
 			S = { x = 0, z = 0},
 			W = { x = 0, z = 0},
@@ -103,10 +103,10 @@ function update()
 		changeCenter()
 		
 		data["markersTargetReady"] = false
-		for k, v in pairs(data["markerTargets"]) then
+		for k, v in pairs(data["markerTargets"]) do
 			local target = v
 			local pos = data["markersPos"][k]
-			target.setID = OFP:spawnEntitySetAtLocation(target.setName, pos.x, data["markerAlt"] pos.z)
+			target.setID = OFP:spawnEntitySetAtLocation(target.setName, pos.x, data["markerAlt"], pos.z)
 		end
 	else
 		data["canShrink"] = false
@@ -117,7 +117,7 @@ end
 function shrinkRange()
 	local ratio = data["shrinkRatio"]
 	local range = data["range"]
-	if ratio > = 1 then
+	if ratio >= 1 then
 		data["range"] = range - ratio
 	else
 		data["range"] = range * (1 - ratio)
@@ -127,12 +127,13 @@ function shrinkRange()
 end
 
 function changeCenter()
+    math.randomseed(os.time())
 	local dir = math.random(0, 359)
 	
 	local dist = 0
 	local ratio = data["shrinkRatio"]
 	local range = data["range"]
-	if ratio > = 1 then
+	if ratio >= 1 then
 		dist = ratio
 	else
 		dist = range * ratio
