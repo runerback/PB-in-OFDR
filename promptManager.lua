@@ -22,6 +22,7 @@ function loadInfos()
     for name, index in pairs(lang["global_index"]) do
         data["resource"][name] = prompts[index]
     end
+    lang = nil
 end
 
 function prompt(key)
