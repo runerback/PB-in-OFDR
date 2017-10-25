@@ -19,13 +19,21 @@ onEDXInitialized = function()
 	end
 end
 
+function log(message)
+    EDX["logger"].log("[unitsManager] "..message)
+end
+
 function register(unitname)
+    log("register")
+
 	if not data["roster"][unitname] then
 		data["roster"][unitname] = false
 	end
 end
 
 function getPlayers()
+    log("getPlayers")
+
     local players = {}
     for k, _ in data["roster"] do
         table.insert(players, k)
@@ -34,6 +42,8 @@ function getPlayers()
 end
 
 function removeAI()
+    log("removeAI")
+
 	local AIs = {}
     for unit, _ in pairs(data["roster"]) do
         if OFP:isSecondaryPlayer(unit) == false and OFP:isPlayer(unit) == false then
@@ -47,6 +57,8 @@ function removeAI()
 end
 
 function startCheck()
+    log("startCheck")
+
 	for unitname, _ in data["roster"] do
         EDX["damageManager"].createModuleInfo(unit)
     end
@@ -55,6 +67,8 @@ function startCheck()
 end
 
 function checkOutsider(timerID)
+    log("checkOutsider")
+
 	for unit, _ in pairs(data["roster"]) do
 		if EDX["securityZone"].isInside(unit) == false then
 			EDX["damageManager"].damage(unit)
@@ -63,6 +77,8 @@ function checkOutsider(timerID)
 end
 
 function tryRemove(unit)
+    log("tryRemove")
+
 	if data["roster"][victim] then
 		data["roster"][victim] = nil
 		EDX["damageManager"].remove(victim)

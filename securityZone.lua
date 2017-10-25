@@ -3,6 +3,7 @@ SCRIPT_NAME = "securityZone"
 
 onEDXInitialized = function()
 	scripts.mission.waypoints.registerFunction("isInside")
+	scripts.mission.waypoints.registerFunction("update")
 	
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
@@ -42,10 +43,22 @@ onEDXInitialized = function()
 		data["shrinkRatio"] = 0.1 --if value less than 1, means percent, else means real value
 		data["canShrink"] = true
         data["markerAlt"] = 8000 --height of marker(invisible helicopter)
+
+        data["objectives"] = {
+            C = "securityObjC",
+            N = "securityObjN",
+            S = "securityObjS",
+            W = "securityObjW",
+            E = "securityObjE"
+        }
+        prepare()
 	else
         
 	end
-	prepare()
+end
+
+function log(message)
+    EDX["logger"].log("[securityZone] "..message)
 end
 
 function isInside(target)
@@ -54,7 +67,104 @@ function isInside(target)
     return EDX:get2dDistance(center.x, center.z, x, z) < data["range"]
 end
 
+--[[
+spawn all five marker and move them to target postion
+--]]
+function prepare()
+    log("prepare")
+
+	updateCorners()
+	initializeMarkers()
+end
+
+function initializeMarkers()
+    log("initializeMarkers")
+
+    if data["markersReady"] == false then --spawn markers
+		local keys = { "C", "N", "S", "W", "E" }
+		for _, key in pairs(keys) do
+			--local pos = data["markersPos"][key]
+			--data["markers"][key] = OFP:spawnEntitySetAtLocation(data["markers"][key], pos.x, data["markerAlt"], pos.z)
+            local markers = data["markers"]
+            markers[key] = OFP:activateEntitySet(markers[key]) -- setName -> setID
+		end
+	end
+end
+
+function onMarkersReady()
+    log("onMarkersReady")
+
+	for _, v in pairs(data["markers"]) do
+		data["markersState"][v] = false
+	end
+	
+	data["markersReady"] = true
+	data["markerReadyCount"] = nil
+
+    generateMarkerTarget() --for initiation
+end
+
+function update()
+    log("update")
+
+	if data["canShrink"] == true and shrinkRange() == true then
+		changeCenter()
+        updateCorners()
+        
+        for _, objective in pairs(data["objectives"]) do
+            OFP:setObjectiveMarkerVisibility(objective, false)
+            OFP:setObjectiveVisibility(objective, false)
+        end
+
+		generateMarkerTarget()
+	else
+		data["canShrink"] = false
+	end
+
+    return data["canShrink"]
+end
+
+--if return false, stop shrink
+function shrinkRange()
+    log("shrinkRange")
+    
+	local ratio = data["shrinkRatio"]
+	local range = data["range"]
+	if ratio >= 1 then
+		data["range"] = range - ratio
+	else
+		data["range"] = range * (1 - ratio)
+	end
+	
+	return data["range"] > 1
+end
+
+function changeCenter()
+    log("changeCenter")
+    
+    math.randomseed(os.time())
+	local dir = math.random(0, 359)
+	
+	local dist = 0
+	local ratio = data["shrinkRatio"]
+	local range = data["range"]
+	if ratio >= 1 then
+		dist = ratio
+	else
+		dist = range * ratio
+	end
+	
+	local dx = dist * math.cos(math.rad(dir))
+	local dz = dist * math.sin(math.rad(dir))
+	
+	local center = data["markersPos"].C
+	center.x = center.x + dx
+	center.z = center.z - dz
+end
+
 function updateCorners()
+    log("updateCorners")
+
 	local center = data["markersPos"].C
 	local centerX = center.x
 	local centerZ = center.z
@@ -79,75 +189,20 @@ function updateCorners()
 	e.z = centerZ
 end
 
---[[
-if first run, spawn all five marker at their position
-else, move them to target postion
---]]
-function prepare()
-	updateCorners()
-	
-	if data["markersReady"] == false then --spawn markers
-		local keys = { "C", "N", "S", "W", "E" }
-		for _, key in pairs(keys) do
-			local pos = data["markersPos"][key]
-			data["markers"][key] = OFP:spawnEntitySetAtLocation(data["markers"][key], pos.x, data["markerAlt"], pos.z)
-		end
+function generateMarkerTarget()
+    log("generateMarkerTarget")
+    
+    data["markersTargetReady"] = false
+	for k, v in pairs(data["markerTargets"]) do
+		local target = v
+		local pos = data["markersPos"][k]
+		target.setID = OFP:spawnEntitySetAtLocation(target.setName, pos.x, data["markerAlt"], pos.z)
 	end
-end
-
---[[
-update four-corner postion
---]]
-function update()
-	if data["canShrink"] == true and shrinkRange() == true then
-		changeCenter()
-		
-		data["markersTargetReady"] = false
-		for k, v in pairs(data["markerTargets"]) do
-			local target = v
-			local pos = data["markersPos"][k]
-			target.setID = OFP:spawnEntitySetAtLocation(target.setName, pos.x, data["markerAlt"], pos.z)
-		end
-	else
-		data["canShrink"] = false
-	end
-end
-
---if return false, stop shrink
-function shrinkRange()
-	local ratio = data["shrinkRatio"]
-	local range = data["range"]
-	if ratio >= 1 then
-		data["range"] = range - ratio
-	else
-		data["range"] = range * (1 - ratio)
-	end
-	
-	return data["range"] > 1
-end
-
-function changeCenter()
-    math.randomseed(os.time())
-	local dir = math.random(0, 359)
-	
-	local dist = 0
-	local ratio = data["shrinkRatio"]
-	local range = data["range"]
-	if ratio >= 1 then
-		dist = ratio
-	else
-		dist = range * ratio
-	end
-	
-	local dx = dist * math.cos(math.rad(dir))
-	local dz = dist * math.sin(math.rad(dir))
-	
-	local center = data["markersPos"].C
-	center.x = center.x + dx
-	center.z = center.z - dz
 end
 
 function onMarkerTargetReady()
+    log("onMarkerTargetReady")
+    
 	data["markerTargetReadyCount"] = 0
 	data["markersTargetReady"] = true
 	
@@ -159,16 +214,9 @@ function onMarkerTargetReady()
 	end
 end
 
-function onMarkersReady()
-	for _, v in pairs(data["markers"]) do
-		data["markersState"][v] = false
-	end
-	
-	data["markersReady"] = true
-	data["markerReadyCount"] = nil
-end
-
 function onMarkersInPosition()
+    log("onMarkersInPosition")
+    
 	data["markerInPosCount"] = 0
 	
 	for k, v in pairs(data["markerTargets"]) do
@@ -176,9 +224,16 @@ function onMarkersInPosition()
 		v.setID = -1
 		OFP:destroyEntitySet(targetSetID)
 	end
+
+    for _, objective in pairs(data["objectives"]) do
+        OFP:setObjectiveMarkerVisibility(objective, true)
+        OFP:setObjectiveVisibility(objective, true)
+    end
 end
 
 function checkMarkersState(setName, setID, entities)
+    log("checkMarkersState")
+    
 	if data["markersReady"] == false then
 		local anyMarkerReady = false
 		for key, _setID in pairs(data["markers"]) do
@@ -196,6 +251,8 @@ function checkMarkersState(setName, setID, entities)
 end
 
 function checkMarkersTargetState(setName, setID, entities)
+    log("checkMarkersTargetState")
+    
 	if data["markersTargetReady"] == false then
 		local anyMarkerTargetReady = false
 		for k, v in pairs(data["markerTargets"]) do
@@ -214,6 +271,8 @@ function checkMarkersTargetState(setName, setID, entities)
 end
 
 function checkMarkersInPosState(unit, waypoint)
+    log("checkMarkersInPosState")
+    
 	if data["markersInPos"] == false then
 		local anyMarkerInPos = false
 		for k, v in pairs(data["markers"]) do

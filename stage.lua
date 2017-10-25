@@ -41,7 +41,13 @@ onEDXInitialized = function()
 	end
 end
 
+function log(message)
+    EDX["logger"].log("[stage] "..message)
+end
+
 function initializeStage()
+    log("initializeStage")
+
     for _, playable in pairs(data["playables"]) do
         --detatch. confrimation needed
         local topEchelon = OFP:getParentEchelon(playable)
@@ -62,10 +68,14 @@ end
 
 --start game
 function startPlay()
+    log("startPlay")
+
     data["carrier"].setID = OFP:spawnEntitySetAtEntityLocation(data["carrier"].setName, data["carrierPath"].startpoint)
 end
 
 function onCarrierReady()
+    log("onCarrierReady")
+
     local carrier = data["carrier"].name
     OFP:setInvulnerable(carrier, true)
     OFP:setVehicleMountableStatus(carrier, 1)
@@ -74,6 +84,8 @@ function onCarrierReady()
 end
 
 function checkCarrier(setName, setID, entities)
+    log("checkCarrier")
+
     if data and data["carrier"].setID == setID then
         data["carrier"].name = entities[1]
         onCarrierReady()
@@ -81,12 +93,16 @@ function checkCarrier(setName, setID, entities)
 end
 
 function checkMapRange(setName, setID, entities)
+    log("checkMapRange")
+
     if data and data["mapRange"].setID == setID then
         data["mapRange"].name = entities[1]
     end
 end
 
 function checkMapRangeState(zone, unit)
+    log("checkMapRangeState")
+
     if zone == data["mapRange"].name and unit == data["carrier"].name then
         return true
     end
@@ -100,6 +116,8 @@ function onEnter(zone, unit)
 end
 
 function onEnterMap()
+    log("onEnterMap")
+
     OFP:showLetterBoxOsd(false)
     EDX["promptManager"].prompt("GAME_START")
 end
@@ -111,6 +129,8 @@ function onLeave(zone, unit)
 end
 
 function onLeavingMap()
+    log("onLeavingMap")
+
     EDX["promptManager"].prompt("CARRIER_LEAVING")
     
     local _, ch, _ = OFP:getPosition(data["carrier"].name)
@@ -130,6 +150,8 @@ end
 
 --recovery carrier
 function checkCarrierEnd(unit, waypoint)
+    log("checkCarrierEnd")
+
     OFP:destroyEntitySet(data["carrier"].setID)
     data["carrier"] = nil
     data["carrierPath"] = nil
@@ -138,6 +160,8 @@ end
 
 --recovery
 function onStageEnd()
+    log("onStageEnd")
+
      for _, player in pairs(EDX["unitsManager"].getPlayers()) do
         OFP:removeFromGroup(player, "chunt")
      end

@@ -25,6 +25,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="damageManager.lua" />
+    <Compile Include="logManager.lua" />
     <Compile Include="strikeZone.lua" />
     <Compile Include="dataManager.lua" />
     <Compile Include="materialManager.lua" />

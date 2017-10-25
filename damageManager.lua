@@ -59,7 +59,13 @@ onEDXInitialized = function()
 	end
 end
 
+function log(message)
+    EDX["logger"].log("[damageManager] "..message)
+end
+
 function createModuleInfo(unit)
+    log("createModuleInfo")
+
 	local hpMap = {
 		3, 3, 6, 6, 6, 6, 6
 	}
@@ -81,6 +87,8 @@ end
 
 --poison can be accumulated, after large toxins the poison will spread, and damage will be more and more
 function damage(unit)
+    log("damage")
+
 	if data["damageInfo"][unit] then
 		local damageInfo = data["damageInfo"][unit]
 		local damageStep = damageInfo.step
@@ -122,6 +130,8 @@ function damage(unit)
 end
 
 function remove(unit)
+    log("remove")
+
 	if data["damageInfo"][unit] then
 		data["damageInfo"][unit] = nil
 	end

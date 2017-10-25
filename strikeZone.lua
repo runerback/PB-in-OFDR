@@ -79,7 +79,7 @@ onEDXInitialized = function()
 end
 
 function log(message)
-	OFP:displaySystemMessage(message)
+    EDX["logger"].log("[strikeZone] "..message)
 end
 
 function start()
