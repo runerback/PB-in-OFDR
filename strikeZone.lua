@@ -31,7 +31,7 @@ onEDXInitialized = function()
             x = -1,
             z = -1
         }
-        data["range"] = 100 --range of artillery strike
+        data["range"] = 300 --range of artillery strike
         data["params"] = { 
             army = 2,
             ammoSize = "howitzer",
@@ -39,14 +39,40 @@ onEDXInitialized = function()
             formation = "harassing",
             delay = 3600
         }
-        data["interval"] = 3600 --interval of next strike. delay after 'start' is 3.6 seconds
         data["marker"] = {
             name = "",
             setName = "dangerMarkerSet",
             setID = -1,
             height = 100 --marker height
         }
-        data["strikeLength"] = 45000 --duration of one strike. should be test and update in code
+        data["markerTarget"] { --waypoint which marker should move to
+            name = "",
+            setName = "dangerMarkerTargetSet",
+            setID = -1,
+            ready = false
+        }
+        data["strikeTarget"] = { --reconpoint whick is strike target
+            name = "",
+            setName = "dangerStrikeTargetSet",
+            setID = -1,
+            ready = false
+        }
+        data["objective"] = "dangerObjective" --hide objective before game loading
+        data["timers"] = {
+            start = {
+                name = "startStrike",
+                delay = 1600, --delay before next strike
+                id = -1
+            },
+            strike = {
+                name = "strike",
+                delay = 3600 --wait marker stable
+            },
+            finish = {
+                name = "strikeEnd",
+                delay = 46000 --duration of one strike
+            }
+        }
 	else
         
 	end
@@ -58,11 +84,38 @@ end
 
 function start()
 	log("start")
-    EDX:serialTimer("strike", data["interval"])
+
+    local objective = data["objective"]
+    OFP:setObjectiveMarkerVisibility(objective, false)
+    OFP:setObjectiveVisibility(objective, false)
+
+    local marker = data["marker"]
+    marker.setID = OFP:activateEntitySet(marker.setName)
+end
+
+function onMarkerReady()
+    log("onMarkerReady")
+
+    local marker = data["marker"].name
+    OFP:setInvulnerable(marker, true)
+    OFP:setArmy(marker, 2)
+    OFP:setVehicleIgnoredByAI(marker, true)
+
+    local startTimer = data["timers"].start
+    startTimer.id = EDX:serialTimer(startTimer.name, startTimer.delay)
+end
+
+function startStrike(timerID)
+	log('strike')
+    math.randomseed(os.time())
+    updateStrikeCenter()
+    generateTargets()
+    updateNextStrikeDelay()
 end
 
 function updateStrikeCenter()
 	log('updateStrikeCenter')
+
     local radius = math.random(1, data["radius"])
     local dir = math.random(0, 359)
     local rad = math.rad(dir)
@@ -75,56 +128,141 @@ function updateStrikeCenter()
     strikeCenter.z = center.z - dz
 end
 
-function updateInterval()
-	log('updateInterval')
-    data["interval"] = math.rad(36, 60) * 1000
+function updateNextStrikeDelay()
+	log('updateNextStrikeDelay')
+
+    local startTimer = data["timers"].start
+    startTimer.delay = math.rad(16, 60) * 1000
+end
+
+function generateTargets()
+    local strikeCenter = data["strikeCenter"]
+    
+    local markerTarget = data["markerTarget"]
+    markerTarget.ready = false
+    markerTarget.setID = OFP:spawnEntitySetAtPosition(markerTarget.setName, strikeCenter.x, data["marker"].height, strikeCenter.z)
+    
+    local strikeTarget = data["strikeTarget"]
+    strikeTarget.ready = false
+    local strikeHeight = OFP:getTerrainHeight(strikeCenter.x, strikeCenter.z)
+    if strikeHeight < 0 then
+        strikeHeight = 0
+    end 
+    strikeTarget.setID = OFP:spawnEntitySetAtPosition(strikeTarget.setName, strikeCenter.x, strikeHeight, strikeCenter.z)
+end
+
+function onMarkerTargetReady()
+    log("onMarkerTargetReady")
+
+    local markerTarget = data["markerTarget"]
+    markerTarget.ready = true
+    OFP:rapidMove(data["marker"].name, markerTarget.name, "override")
+end
+
+--this should always get ready first
+function onStrikeTargetReady()
+    log("onStrikeTargetReady")
+
+    data["strikeTarget"].ready = true
+end
+
+function onMarkerInPosition()
+    log("onMarkerInPosition")
+
+    EDX["promptManager"].prompt("STR_COMING")
+    --wait for marker to stable
+    local strikeTimer = data["timers"].strike
+    EDX:simpleTimer(strikeTimer.name, strikeTimer.delay)
 end
 
 function strike(timerID)
-	log('strike')
-    math.randomseed(os.time())
-    updateStrikeCenter()
+    log("strike")
 
-    local center = data["strikeCenter"]
-    local marker = data["marker"]
-    --marker.setID = OFP:spawnEntitySetAtLocation(marker.setName, center.x, marker.height, center.z)
-	marker.setID = OFP:activateEntitySet(marker.setName)
-    updateInterval()
-    --EDX:setTimer(timerID, data["interval"]) --strike only once for now
-end
-
-function onMarkerReady()
-	log('onMarkerReady')
-	--OFP:setObjectiveVisibility('objective', true)
-    local args = data["params"]
-    local target = data["marker"].name
-    OFP:setInvulnerable(target, true)--for test
-    log('target - '..target)
-    OFP:callArtilleryStrike(args.army, target, args.ammoSize, args.ammoType, args.formation, args.delay)
-    EDX:simpleTimer("onStrikeEnd", data["strikeLength"])
-end
-
-function onStrikeEnd(timerID)
-	log('onStrikeEnd')
     EDX:deleteTimer(timerID)
-    stop()
+    
+    local objective = data["objective"]
+    OFP:setObjectiveMarkerVisibility(objective, true)
+    OFP:setObjectiveVisibility(objective, true)
+
+    local args = data["params"]
+    local target = data["strikeTarget"].name
+
+    OFP:callArtilleryStrike(args.army, target, args.ammoSize, args.ammoType, args.formation, args.delay)
+
+    local strikeFinishTimer = data["timers"].finish
+    EDX:simpleTimer(strikeFinishTimer.name, strikeFinishTimer.delay)
 end
 
-function stop()
-	log('stop')
-    --OFP:destroyEntitySet(data["marker"].setID)--for test
-    data["marker"].setID = -1
+function strikeEnd(timerID)
+	log('strikeEnd')
+
+    EDX:deleteTimer(timerID)
+    onStrikeFinished()
+end
+
+function onStrikeFinished()
+	log('onStrikeFinished')
+    
+    local objective = data["objective"]
+    OFP:setObjectiveMarkerVisibility(objective, false)
+    OFP:setObjectiveVisibility(objective, false)
+
+    local markerTarget = data["markerTarget"]
+    OFP:destroyEntitySet(markerTarget.setID)
+    markerTarget.setID = -1
+    markerTarget.name = ""
+    markerTarget.ready = false
+
+    local strikeTarget = data["stikeTarget"]
+    OFP:destroyEntitySet(strikeTarget.setID)
+    strikeTarget.setID = -1
+    strikeTarget.name = ""
+    strikeTarget.ready = false
+
+    local startTimer = data["timers"].start
+    EDX:setTimer(startTimer.id, startTimer.delay)
 end
 
 function checkMarker(setName, setID, entities)
 	log('checkMarker')
+
     if data["marker"].setID == setID then
         data["marker"].name = entities[1]
         onMarkerReady()
     end
 end
 
+function checkMarkerTarget(setName, setID, entities)
+    log("checkMarkerTarget")
+
+    if data["markerTarget"].setID == setID then
+        data["markerTarget"].name = entities[1]
+        onMarkerTargetReady()
+    end
+end
+
+function checkStrikeTarget(setName, setID, entities)
+    log("checkStrikeTarget")
+
+    if data["strikeTarget"].setID == setID then
+        data["strikeTarget"].name = entities[1]
+        onStrikeTargetReady()
+    end
+end
+
+function checkMarkerInPosition(entity, waypoint)
+    log("checkMarkerInPosition")
+
+    if entity == data["marker"].name and waypoint == data["markerTarget"].name then
+        onMarkerInPosition()
+    end
+end
+
 function onSpawnedReady(setName, setID, entities)
     checkMarker(setName, setID, entities)
+end
+
+function onArriveAtWaypoint(entity, waypoint)
+    checkMarkerInPosition(entity, waypoint)
 end
 

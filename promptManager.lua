@@ -26,7 +26,12 @@ function loadInfos()
 end
 
 function prompt(key)
-    return data["resource"][key]
+    local msg = data["resource"][key]
+    if not msg then
+        OFP:displaySystemMessage("cannot find propmt from key: "..key)
+    else
+        OFP:displaySystemMessage(msg)
+    end
 end
 
 

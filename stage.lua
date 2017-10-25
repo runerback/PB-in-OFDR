@@ -101,7 +101,7 @@ end
 
 function onEnterMap()
     OFP:showLetterBoxOsd(false)
-    OFP:displaySystemMessage(EDX["promptManager"].prompt("GAME_START"))
+    EDX["promptManager"].prompt("GAME_START")
 end
 
 function onLeave(zone, unit)
@@ -111,7 +111,7 @@ function onLeave(zone, unit)
 end
 
 function onLeavingMap()
-    OFP:displaySystemMessage(EDX["promptManager"].prompt("CARRIER_LEAVING"))
+    EDX["promptManager"].prompt("CARRIER_LEAVING")
     
     local _, ch, _ = OFP:getPosition(data["carrier"].name)
     for _, player in pairs(EDX["unitsManager"].getPlayers()) do
