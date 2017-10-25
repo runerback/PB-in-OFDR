@@ -1,6 +1,10 @@
 SCRIPT_NAME = "materialManager"
 
 onEDXInitialized = function()
+	
+end
+
+function onDataReady()
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
         data["materialMarkerSetName"] = "materialSet"

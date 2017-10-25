@@ -5,7 +5,9 @@ onEDXInitialized = function()
 	scripts.mission.waypoints.registerFunction("register")
 	scripts.mission.waypoints.registerFunction("getPlayers")
 	scripts.mission.waypoints.registerFunction("removeAI")
-	
+end
+
+function onDataReady()
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
         data["roster"] = {} -- unitname <-> isOutside

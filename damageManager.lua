@@ -5,7 +5,9 @@ onEDXInitialized = function()
 	scripts.mission.waypoints.registerFunction("createModuleInfo")
 	scripts.mission.waypoints.registerFunction("damage")
 	scripts.mission.waypoints.registerFunction("remove")
-	
+end
+
+function onDataReady()
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
 		--[[

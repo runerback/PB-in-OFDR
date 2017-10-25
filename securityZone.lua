@@ -4,7 +4,9 @@ SCRIPT_NAME = "securityZone"
 onEDXInitialized = function()
 	scripts.mission.waypoints.registerFunction("isInside")
 	scripts.mission.waypoints.registerFunction("update")
-	
+end
+
+function onDataReady()
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
 		data["markersPos"] = { 

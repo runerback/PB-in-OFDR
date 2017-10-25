@@ -11,14 +11,19 @@ onEDXInitialized = function()
 	if not data then
 		--table is a reference type
 		data = {}
-		data["_path"] = "./data_win/missions/kmp/cache" --change this to your exported mission folder and stored data file name.
+		data["_path"] = "./data_win/missions/kmp-union/cache" --change this to your exported mission folder and stored data file name.
 		data["_firstrun"] = true
 	else
-		load()
+		--load()
 	end
+	scripts.mission.waypoints.simpleFunc("onDataReady", true)
 end
 
 onMissionStart = function()
+	if not data then
+		OFP:missionCompleted()
+		return
+	end
 	data["_firstrun"] = false
 end
 

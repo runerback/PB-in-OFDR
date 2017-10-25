@@ -13,7 +13,9 @@ SCRIPT_NAME = "stage"
 
 onEDXInitialized = function()
 	scripts.mission.waypoints.registerFunction("startPlay")
-	
+end
+
+function onDataReady()
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
         data["playables"] = { --all playables here
