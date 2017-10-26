@@ -66,7 +66,13 @@ end
 function isInside(target)
 	local x, _, z = OFP:getPosition(target)
 	local center = data["markersPos"].C
-    return EDX:get2dDistance(center.x, center.z, x, z) < data["range"]
+    local inside = EDX:get2dDistance(center.x, center.z, x, z) < data["range"]
+    if inside then
+        log(target.." is safe")
+    else
+        log(target.." is not safe")
+    end
+    return inside
 end
 
 --[[
@@ -121,6 +127,7 @@ function update()
 		generateMarkerTarget()
 	else
 		data["canShrink"] = false
+        log("cannot shrink any more")
 	end
 
     return data["canShrink"]
@@ -132,20 +139,24 @@ function shrinkRange()
     
 	local ratio = data["shrinkRatio"]
 	local range = data["range"]
+    local newRange
 	if ratio >= 1 then
-		data["range"] = range - ratio
+		newRange = range - ratio
 	else
-		data["range"] = range * (1 - ratio)
+		newRange = range * (1 - ratio)
 	end
-	
-	return data["range"] > 1
+    data["range"] = newRange
+	log("range from ["..range.."] to ["..newRange.."]")
+
+	return newRange > 1
 end
 
 function changeCenter()
     log("changeCenter")
     
-    math.randomseed(os.time())
+    --math.randomseed(os.time()) set once
 	local dir = math.random(0, 359)
+    log("direction - "..dir)
 	
 	local dist = 0
 	local ratio = data["shrinkRatio"]
@@ -155,11 +166,15 @@ function changeCenter()
 	else
 		dist = range * ratio
 	end
+    log("center moving distance - "..dist)
 	
 	local dx = dist * math.cos(math.rad(dir))
 	local dz = dist * math.sin(math.rad(dir))
+
+    log("dx - "..dx..", dz - "..dz)
 	
 	local center = data["markersPos"].C
+
 	center.x = center.x + dx
 	center.z = center.z - dz
 end
@@ -170,6 +185,7 @@ function updateCorners()
 	local center = data["markersPos"].C
 	local centerX = center.x
 	local centerZ = center.z
+    log("center - ("..centerX..", "..centerZ..")")
 	
 	local range = data["range"]
 	
@@ -212,6 +228,7 @@ function onMarkerTargetReady()
 	for k, v in pairs(data["markers"]) do
 		local target = data["markerTargets"][k].name
 		local marker = v
+        log("marker["..k.."] is moving")
 		OFP:rapidMove(marker, target, "override")
 	end
 end
@@ -238,11 +255,14 @@ function checkMarkersState(setName, setID, entities)
     
 	if data["markersReady"] == false then
 		local anyMarkerReady = false
+        local markerReadyCount = data["markerReadyCount"]
 		for key, _setID in pairs(data["markers"]) do
 			if _setID == setID then
 				data["markers"][key] = entities[1]
-				data["markerReadyCount"] = data["markerReadyCount"] + 1
+				markerReadyCount = markerReadyCount + 1
+                data["markerReadyCount"] = markerReadyCount
 				anyMarkerReady = true
+                log("marker ready count - "..markerReadyCount)
 				break
 			end
 		end
@@ -257,12 +277,15 @@ function checkMarkersTargetState(setName, setID, entities)
     
 	if data["markersTargetReady"] == false then
 		local anyMarkerTargetReady = false
+        local markerTargetReadyCount = data["markerTargetReadyCount"]
 		for k, v in pairs(data["markerTargets"]) do
 			local target = v
 			if target.setID == setID then
 				target.name = entities[1]
-				data["markerTargetReadyCount"] = data["markerTargetReadyCount"] + 1
+				markerTargetReadyCount = markerTargetReadyCount + 1
+                data["markerTargetReadyCount"] = markerTargetReadyCount
 				anyMarkerTargetReady = true
+                log("marker target ready count - "..markerTargetReadyCount)
 				break
 			end
 		end
@@ -277,12 +300,15 @@ function checkMarkersInPosState(unit, waypoint)
     
 	if data["markersInPos"] == false then
 		local anyMarkerInPos = false
+        local markerInPosCount = data["markerInPosCount"]
 		for k, v in pairs(data["markers"]) do
 			local target = data["markerTargets"][k].name
 			local marker = v
 			if unit == marker and waypoint == target then
-				data["markerInPosCount"] = data["markerInPosCount"] + 1
+				markerInPosCount = markerInPosCount + 1
+                data["markerInPosCount"] = markerInPosCount
 				anyMarkerInPos = true
+                log("marker in position count - "..markerInPosCount)
 				break
 			end
 		end
@@ -300,39 +326,3 @@ end
 function onArriveAtWaypoint(unit, waypoint)
 	checkMarkersInPosState(unit, waypoint)
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

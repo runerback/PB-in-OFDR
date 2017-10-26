@@ -5,6 +5,7 @@ onEDXInitialized = function()
 	scripts.mission.waypoints.registerFunction("register")
 	scripts.mission.waypoints.registerFunction("getPlayers")
 	scripts.mission.waypoints.registerFunction("removeAI")
+	scripts.mission.waypoints.registerFunction("startCheck")
 end
 
 function onDataReady()
@@ -26,7 +27,7 @@ function log(message)
 end
 
 function register(unitname)
-    log("register")
+    log("register - "..unitname)
 
 	if not data["roster"][unitname] then
 		data["roster"][unitname] = false
@@ -52,6 +53,7 @@ function removeAI()
             table.insert(AIs, unit)
         end
     end
+    log("AI count - "..#AIs)
     for _, unit in pairs(AIs) do
         data["roster"][unit] = nil
         OFP:despawnEntity(unit)
@@ -76,10 +78,11 @@ function checkOutsider(timerID)
 			EDX["damageManager"].damage(unit)
 		end
 	end
+    EDX:setTimer(data["checkerID"], data["freq"])
 end
 
 function tryRemove(unit)
-    log("tryRemove")
+    log("tryRemove - "..unit)
 
 	if data["roster"][victim] then
 		data["roster"][victim] = nil

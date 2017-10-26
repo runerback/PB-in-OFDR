@@ -57,7 +57,7 @@ end
 function buildMaterialMap()
     log("buildMaterialMap")
 
-    math.randomseed(os.time())
+    --math.randomseed(os.time()) set once
     local map = {}
     local sets = {}
     

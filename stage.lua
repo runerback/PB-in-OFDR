@@ -52,7 +52,13 @@ function initializeStage()
 
     for _, playable in pairs(data["playables"]) do
         --detatch. confrimation needed
+        log("detatching "..playable)
         local topEchelon = OFP:getParentEchelon(playable)
+        log("top echelon - "..topEchelon)
+        OFP:detatch(playable, topEchelon)
+        log("detatched")
+        local curEchelon = OFP:getParentEchelon(playable)
+        log("current echelon - "..curEchelon)
         
         --army
         OFP:setArmy(playable, 2)
@@ -64,6 +70,7 @@ function initializeStage()
         EDX["unitsManager"].register(playable)
     end
     OFP:activateEntitySet(data["stageSetName"])
+    log("stage spawned")
     data["stageSetName"] = nil
     data["mapRange"].setID = OFP:activateEntitySet(data["mapRange"].setName)
 end
@@ -79,9 +86,12 @@ function onCarrierReady()
     log("onCarrierReady")
 
     local carrier = data["carrier"].name
+    log("carrier - "..carrier)
     OFP:setInvulnerable(carrier, true)
     OFP:setVehicleMountableStatus(carrier, 1)
-    OFP:rapidMove(carrier, data["carrierPath"].name, "addtofront")
+    local path = data["carrierPath"].name
+    log("path - "..path)
+    OFP:rapidMove(carrier, path, "addtofront")
     OFP:showLetterBoxOsd(true)
 end
 
@@ -99,6 +109,7 @@ function checkMapRange(setName, setID, entities)
 
     if data and data["mapRange"].setID == setID then
         data["mapRange"].name = entities[1]
+        log("map range checked")
     end
 end
 
@@ -106,6 +117,7 @@ function checkMapRangeState(zone, unit)
     log("checkMapRangeState")
 
     if zone == data["mapRange"].name and unit == data["carrier"].name then
+        log("carrier hit map edge")
         return true
     end
     return false
@@ -136,10 +148,13 @@ function onLeavingMap()
     EDX["promptManager"].prompt("CARRIER_LEAVING")
     
     local _, ch, _ = OFP:getPosition(data["carrier"].name)
+    log("carrier height - "..ch)
     for _, player in pairs(EDX["unitsManager"].getPlayers()) do
         if OFP:isAnyMounted(player) then
             local _, ph, _ = OFP:getPosition(player)
+            log("["..player.."] height - "..ph)
             if ph > ch - 10 then
+                log("kick out "..player)
                 OFP:forceDismountVehicle(player, "override")
             end
         end
@@ -148,6 +163,7 @@ function onLeavingMap()
     --recovery map range zone
     OFP:destroyEntitySet(data["mapRange"].setID)
     data["mapRange"] = nil
+    log("map range recovered")
 end
 
 --recovery carrier
@@ -157,6 +173,7 @@ function checkCarrierEnd(unit, waypoint)
     OFP:destroyEntitySet(data["carrier"].setID)
     data["carrier"] = nil
     data["carrierPath"] = nil
+    log("carrier recovered")
     onStageEnd()
 end
 
@@ -164,11 +181,13 @@ end
 function onStageEnd()
     log("onStageEnd")
 
-     for _, player in pairs(EDX["unitsManager"].getPlayers()) do
-        OFP:removeFromGroup(player, "chunt")
-     end
+    for _, player in pairs(EDX["unitsManager"].getPlayers()) do
+       OFP:removeFromGroup(player, "chunt")
+    end
+    log("players removed from jumper")
     EDX["dataManager"].Remove(SCRIPT_NAME)
     data = nil
+    log("state data recovered")
 end
 
 function onArriveAtWaypoint(unit, waypoint)

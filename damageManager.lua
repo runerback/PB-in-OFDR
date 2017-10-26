@@ -66,7 +66,7 @@ function log(message)
 end
 
 function createModuleInfo(unit)
-    log("createModuleInfo")
+    log("createModuleInfo - "..unit)
 
 	local hpMap = {
 		3, 3, 6, 6, 6, 6, 6
@@ -82,18 +82,20 @@ function createModuleInfo(unit)
 			["step"] = damageStep,
 			["spreadIndex"] = damageSpreadIndex
 		}
+        log("module info of ["..unit.."] created")
 	else
-		
+		log("module info of ["..unit.."] already exists")
 	end
 end
 
 --poison can be accumulated, after large toxins the poison will spread, and damage will be more and more
 function damage(unit)
-    log("damage")
+    log("damage - "..unit)
 
 	if data["damageInfo"][unit] then
 		local damageInfo = data["damageInfo"][unit]
 		local damageStep = damageInfo.step
+        log("damagerStep - "..damageStep)
 		local hps = damageInfo.hps
 		local hp, moduleName
 		if damageStep == 3 then
@@ -104,35 +106,47 @@ function damage(unit)
 			hp = hps[damageStep]
 			moduleName = data["modules"][damageStep]
 		end
+        log("current HP - "..hp)
+        log("current module name - "..moduleName)
 		
 		local damageRatio = damageInfo.ratio
+        log("current damage ratio - "..damageRatio)
 		if hp > 0 then
 			OFP:damage(unit, moduleName, damageRatio)
+            log("damaged")
 			return
 		end
 		
-        math.randomseed(os.time())
+        --math.randomseed(os.time()) set once
 		--move to next module
 		if damageStep == 4 then --all hp run out
+            log("all hp run out")
 			OFP:damage(unit, "chestzone", 10) --kill target
 			if OFP:isAlive(unit) then
 				--local error = 100 / 0 --anti-cheating here
-				OFP:dispalySystemMessage("someone is cheating")
+				log("someone is cheating")
+            else
+                log("wested")
 			end
 		else
 			damageStep = damageStep + 1
+            log("next step - "..damageStep)
 			if damageStep == 3 then --spread only once
 				local spreadStep = math.random(1, 4)
 				damageInfo.spreadIndex = spreadStep
+                log("spreading step - "..spreadStep)
 			end
 			damageInfo.step = damageStep
-			damageInfo.ratio = damageRatio * 1.1
+
+            local nextDamageRatio = damageRatio * 1.1
+            log("next damage ratio - "..nextDamageRatio)
+			damageInfo.ratio = nextDamageRatio
 		end
 	end
 end
 
 function remove(unit)
-    log("remove")
+    log("remove - "..unit)
 
 	if data["damageInfo"][unit] then
 		data["damageInfo"][unit] = nil
