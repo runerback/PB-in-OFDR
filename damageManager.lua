@@ -4,6 +4,9 @@ not simply add operation.
 
 player is weak than AI, so test with player
 chest zone: 3 - wounded 5 - bleeding 8 - incapacitated 10 - dead
+
+so when hp run out, damage by 3 point
+but if one turn not cause heavy damage, run it again
 --]]
 
 SCRIPT_NAME = "damageManager"
@@ -17,40 +20,6 @@ end
 function onDataReady()
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
-		--[[
-        data["modules"] = {
-			{
-				name = "chestzone",
-				HP= 3
-			},
-			{
-				name = "adbomenzone",
-				HP = 3
-			},
-			{
-				{
-					name = "larmzone",
-					HP = 6
-				},
-				{
-					name = "rarmzone",
-					HP = 6
-				},
-				{
-					name = "llegzone",
-					HP = 6
-				},
-				{
-					name = "rlegzone",
-					HP = 6
-				}
-			},
-			{
-				name = "headzone",
-				HP = 6
-			}
-		}
-		--]]
 		data["modules"] = {
 			"chestzone",
 			"adbomenzone",
@@ -62,6 +31,7 @@ function onDataReady()
 			},
 			"headzone"
 		}
+        data["damage"] = 3
 		data["damageInfo"] = { }
 	else
         
@@ -76,7 +46,7 @@ function createModuleInfo(unit)
     log("createModuleInfo - "..unit)
 
 	local hpMap = {
-		1, 1, 1, 1, 1, 1, 1
+		6, 9, 10, 10, 10, 10, 16
 	}
 	local damageRatio = 1.0
 	local damageStep = 1 --1 - chest; 2 - abdomen; 3 - random(larm, rarm, lleg, rleg); 4 - head
@@ -119,14 +89,13 @@ function damage(unit)
         log("current module name - "..moduleName)
 		
 		local damageRatio = damageInfo.ratio
-        log("current damage ratio - "..damageRatio)
-		local dHP = damageRatio
-		
+        log("current damage ratio - "..damageRatio)		
 		damageInfo.ratio = damageRatio * 1.01
 			
 		if hp > 0 then
+            local dHP = data["damage"]
 			OFP:damage(unit, moduleName, dHP)
-			hps[hpIndex] = hp - dHP
+			hps[hpIndex] = hp - damageRatio
             log("damaged")
 			return
 		end
@@ -135,7 +104,7 @@ function damage(unit)
 		--move to next module
 		if damageStep == 4 then --all hp run out
             log("all hp run out")
-			OFP:damage(unit, "chestzone", 10) --kill target
+			OFP:damage(unit, "chestzone", 16) --kill target
 			if OFP:isAlive(unit) then
 				--local error = 100 / 0 --anti-cheating here
 				log("someone is cheating")
