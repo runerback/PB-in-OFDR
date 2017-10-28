@@ -13,6 +13,8 @@
 	after strike, recovery strike target, hide mission objective.
 	
 	finally, recovery marker if condition allowed.
+	
+	each marker need two mission objective, B(blue) and R(red)
 --]]
 
 SCRIPT_NAME = "strikeZone"
@@ -74,7 +76,10 @@ function onDataReady()
                 delay = 46000 --duration of one strike
             }
         }
-        data["objective"] = "dangerObj" --hide objective before game loading
+        data["objective"] = { --hide objective in mission editor
+			["B"] = "dangerObjB",
+			["R"] = "dangerObjR"
+		} 
 	else
         
 	end
@@ -92,10 +97,8 @@ end
 function start()
 	--log("start")
 
-    local objective = data["objective"]
-    OFP:setObjectiveMarkerVisibility(objective, false)
-    OFP:setObjectiveVisibility(objective, false)
-
+	setObjectiveVisibility(false)
+    
     local marker = data["marker"]
     marker.setID = OFP:activateEntitySet(marker.setName)
 end
@@ -191,9 +194,7 @@ function strike(timerID)
 
     EDX:deleteTimer(timerID)
     
-    local objective = data["objective"]
-    OFP:setObjectiveMarkerVisibility(objective, true)
-    OFP:setObjectiveVisibility(objective, true)
+	setObjectiveVisibility(true)
 
     local args = data["params"]
     local target = data["strikeTarget"].name
@@ -213,10 +214,8 @@ end
 
 function onStrikeFinished()
 	--log('onStrikeFinished')
-    
-    local objective = data["objective"]
-    OFP:setObjectiveMarkerVisibility(objective, false)
-    OFP:setObjectiveVisibility(objective, false)
+	
+	setObjectiveVisibility(false)
 
     local markerTarget = data["markerTarget"]
     OFP:destroyEntitySet(markerTarget.setID)
@@ -233,6 +232,14 @@ function onStrikeFinished()
     local startTimer = data["timers"].start
     --log("delay - "..startTimer.delay)
     EDX:setTimer(startTimer.id, startTimer.delay)
+end
+
+function setObjectiveVisibility(visible)
+	for _, v in pairs(data["objective"]) do
+		local objective = v
+		OFP:setObjectiveMarkerVisibility(objective, visible)
+		OFP:setObjectiveVisibility(objective, visible)
+	end
 end
 
 function checkMarker(setName, setID, entities)
