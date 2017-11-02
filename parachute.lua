@@ -2,14 +2,12 @@
 SCRIPT_NAME =	"parachute"
 logtofile = false
 
-onEDXInitialized = function()
+function onMissionStart()
 	jumperTable = {}
 	spawnedSet = {}
 	deploy_chute_table = {"dep1","dep2","dep3","dep4","dep5","dep6","dep7","dep8"}
-	--OFP:addTimer("timeMech", 500) --callback no found
-	--OFP:addTimer("hangCycle", 1000) --use EDX timer insteed
-	hangChute = {} --move to here
-	EDX:simpleTimer("hangCycle", 1000)
+	OFP:addTimer("timeMech", 500)
+	OFP:addTimer("hangCycle", 1000)
 end
 
 function onInitialized()
@@ -18,16 +16,14 @@ end
 
 function hangCycle(timerID)
 	--OFP:displaySystemMessage("Hang cycle started")
-	--if not hangChute then
-		--hangChute = {}
-	--end
+	if not hangChute then
+		hangChute = {}
+	end
 	for i = 1, 50 do
 		hangChute[OFP:spawnEntitySetAtLocation("cht1", 0, 0, 0)] = true
 	end
-	--OFP:addTimer("hangRemoval", 1000)
-	--OFP:removeTimer("hangCycle")
-	EDX:deleteTimer(timerID)
-	EDX:serialTimer("hangRemoval", 1000)
+	OFP:addTimer("hangRemoval", 1000)
+	OFP:removeTimer("hangCycle")
 end
 
 function hangRemoval(timerID)

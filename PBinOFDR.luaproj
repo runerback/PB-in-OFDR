@@ -25,8 +25,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="damageManager.lua" />
+    <Compile Include="jumperManager.lua" />
     <Compile Include="logger.lua" />
-    <Compile Include="securityZone2.lua" />
+    <Compile Include="parachute.lua" />
+    <Compile Include="securityZone.lua" />
     <Compile Include="strikeZone.lua" />
     <Compile Include="dataManager.lua" />
     <Compile Include="materialManager.lua" />
