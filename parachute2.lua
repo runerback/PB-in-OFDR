@@ -33,24 +33,22 @@ function register( jumperName)
     log("register - "..jumperName)
 
     local jumperInfo = {
-        name = jumperName,
-        jump_height = -1,
-        count = 0,
-        alt = 99999,
-        dep = 0,
-        teth1 = false,
-		tethes = {},
-        net = 0,
-        chute = "",
+		chute_set = "",
+        container_chute_destroy_table = {},
+		container_chute_set = {},
+        container_delay = 0,
+		coordinate = { x = -1, y = -1, z = -1 },
+		deploying = false,
+        deploy_chute_destroy_table = {},
         deploy_chute_index = 1,
         extra = 0,
-        container_delay = 0,
-        deploy_chute_destroy_table = {},
-        container_chute_destroy_table = {},
-		coordinate = { x = -1, y = -1, z = -1 },
-		terrain_height = -1,
-		height_from_surface= -1,
-        jumped = false
+		height_from_surface = -1,
+        jump_height = -1,
+        jumped = false,
+        name = jumperName,
+        net = 0,
+        teth1 = false,
+		tethes = {}
     }
 	data["jumperTable"][jumperName] = jumperInfo
 
@@ -67,6 +65,8 @@ function checkJumpState(vehicle, unit)
                 jumperInfo.jumped = true
                 onJumped(unit)
                 return true
+			else
+				log("jumper jumped too low - "..unit)
             end
         end
     end
@@ -81,60 +81,42 @@ function onJumped( jumper)
 end
 
 function chutedeploy(timerID)
-	if next(data["jumperTable"]) == nil then --all registered jumpers finished
-		log("all jumpers finished")
-		
-		EDX:deleteTimer(timerID)
-		data["timers"] = nil
-		
-		OFP:destroyEntitySet(data["hid"])
-		data["hid"] = nil
-		
-		data["jumperTable"] = nil
-		data["spawnedSet"] = nil
-		data["deploy_chute_table"] = nil
-		
-		onCompleted(data["completion"])
-		data["completion"] = nil
-		
-		data = nil
+	local allJumped = false
+	for jumper, jumperInfo in pairs(data["jumperTable"]) do
+		if jumperInfo.jumped then
+			updateChutedeploy( jumper, jumperInfo)
+			allJumped = true
+		end
+	end
+	if allJumped == false then
+		EDX:disableTimer(timerID)
 	else
-		local allJumped = false
-		for jumper, jumperInfo in pairs(data["jumperTable"]) do
-			if jumperInfo.jumped then
-				local jumperInfo = v
-				local x, y, z = OFP:getPosition(jumper)
-				
-				local terrain_height = OFP:getTerrainHeight(x, z)
-				if terrain_height < 0 then
-					terrain_height = 0
-				end
-				jumperInfo.terrain_height = terrain_height
-				
-				local height_from_surface = math.floor(y - terrain_height)
-				jumperInfo.height_from_surface = height_from_surface
-				
-				local distance_fallen = jumperInfo.jump_height - height_from_surface
-				if distance_fallen >= 20 and height_from_surface <= 60 and jumperInfo.dep == 0 then
-					local coordinate = jumperInfo.coordinate
-					coordinate.x = x
-					coordinate.y = y
-					coordinate.z = z
-					
-					jumperInfo.container_delay = 0
-					jumperInfo.dep = 1
-					jumperInfo.extra = 0
-					jumperInfo.chute_set = data["deploy_chute_table"][jumperInfo.deploy_chute_index]
-					deploychute(jumperInfo)
-				end
-				allJumped = true
-			end
-		end
-		if allJumped == false then
-			EDX:disableTimer(timerID)
-		else
-			EDX:setTimer(timerID, 250)
-		end
+		EDX:setTimer(timerID, 250)
+	end
+end
+
+function updateChutedeploy( jumper, jumperInfo)
+	local x, y, z = OFP:getPosition(jumper)
+	local terrain_height = OFP:getTerrainHeight(x, z)
+	if terrain_height < 0 then
+		terrain_height = 0
+	end
+	local height_from_surface = math.floor(y - terrain_height)
+	jumperInfo.height_from_surface = height_from_surface
+	
+	local coordinate = jumperInfo.coordinate
+	coordinate.x = x
+	coordinate.y = y
+	coordinate.z = z
+	
+	local distance_fallen = jumperInfo.jump_height - height_from_surface
+	if distance_fallen >= 20 and height_from_surface <= 60 and jumperInfo.deploying == false then
+		jumperInfo.container_delay = 0
+		jumperInfo.deploying = true
+		jumperInfo.extra = 0
+		jumperInfo.chute_set = data["deploy_chute_table"][jumperInfo.deploy_chute_index]
+		
+		deploychute(jumperInfo)
 	end
 end
 
@@ -199,6 +181,8 @@ function deploychute(jumperInfo)
 			data["jumperTable"][jumper] = nil
 			
 			OFP:setInvulnerable(jumper, false)
+
+            checkCompletionState()
 		end
 	end
 end
@@ -209,6 +193,27 @@ function disengageChute(jumperInfo)
 		return false
 	end
 	return true
+end
+
+function checkCompletionState()
+	if next(data["jumperTable"]) == nil then --all registered jumpers finished
+		log("all jumpers finished")
+		
+		EDX:deleteTimer(data["timers"].chutedeploy)
+		data["timers"] = nil
+		
+		OFP:destroyEntitySet(data["hid"])
+		data["hid"] = nil
+		
+		data["jumperTable"] = nil
+		data["spawnedSet"] = nil
+		data["deploy_chute_table"] = nil
+		
+		onCompleted(data["completion"])
+		data["completion"] = nil
+		
+		data = nil
+    end
 end
 
 function checkSpawnedSet(setName, setID)
@@ -225,7 +230,6 @@ function checkSpawnedSet(setName, setID)
 					jumperInfo.chute_set = (data["deploy_chute_table"][deploy_chute_index])
 					jumperInfo.deploy_chute_index = deploy_chute_index
 				else
-					jumperInfo.teth = 1
 					jumperInfo.chute_set = "cht1"
 					jumperInfo.net = jumperInfo.net + 1
 				end
