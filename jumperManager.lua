@@ -2,207 +2,427 @@
 SCRIPT_NAME = "jumperManager"
 
 onEDXInitialized = function()
-    scripts.mission.waypoints.registerFunction("registerCompletedCallback")
     scripts.mission.waypoints.registerFunction("register")
+    scripts.mission.waypoints.registerFunction("registerCompletion")
+    scripts.mission.waypoints.registerFunction("getRegisteredJumpers")
 end
 
 function onDataReady()
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
-		data["completeCallback"] = -1
-        data["hiddenSet"] = {
-            setName = "hid",
-            setID = -1 --recover this set after all jumpers hit ground. otherwise all original board on map are invisible too.
-        }
-        data["chuteSet"] = { "dep1","dep2","dep3","dep4","dep5","dep6","dep7","dep8" }
-        data["boardSet"] = "" --need to check
+        data["completion"] = {} --store completion callbacks
         data["jumpers"] = {}
-        data["jumperIndexes"] = {
-            chute = { },
-            board = { }
+        data["setIndexes"] = {}
+        data["deploy_chute_sets"] = {"dep1","dep2","dep3","dep4","dep5","dep6","dep7","dep8"}
+        --data["timers"] = {
+        --    chutedeploy = EDX:serialTimer("updateChuteState", -1)
+        --}
+        data["processor"] = {
+        	jumper = {
+        		name = "jumperTaskProcessor",
+        		id = -1,
+        		running = false,
+        		interval = 250,
+        		tasks = {}
+        	}
         }
-        data["params"] = {
-            minJumpHeight = 100,
-            stepLength = 1
-        }
-        data["chuteTaskQueue"] = {}
-        data["timers"] = {
-            chuteTaskProcessor = {
-                running = false,
-                timerID = -1,
-                interval = 250
-            },
-            jumperStateUpdator = {
-                running = false,
-                timerID = -1,
-                interval = 1600 --set this a little longer
-            }
-        }
-	else
-	end
+        data["disposing"] = false --if true, disable all Check functions
+        
+        --data["hid"] = OFP:activateEntitySet("hid")
+        initializeProcessors()
+    else
+    end
 end
 
 function log(message)
     EDX["logger"].log("[jumperManager] "..message)
 end
 
-function initializeTimers()
-    data["timers"].chuteTaskProcessor.timerID = EDX:serialTimer("chuteTaskProcessor", -1)
-    data["timers"].jumperStateUpdator.timerID = EDX:serialTimer("jumperStateUpdator", -1)
+--processor start
+function initializeProcessors()
+	for _, processor in pairs(data["processor"]) do
+		processor.id = EDX:serialTimer(processor.name, -1, processor)
+	end
 end
 
-function registerCompletedCallback(callback)
-    log("registerCompletedCallback - "..tostring(callback))
-    data["completedCallback"] = callback
-end
+function releaseProcessor(name)
+    --log("releaseProcessor - "..name)
 
-function register(jumperName)
-    log("register - "..jumperName)
-
-    local jh_x, jh_y, jh_z = OFP:getPosition(jumperName)
-    local jh_t = OFP:getTerrainHeight(jh_x, jh_z)
-    local jumperInfo = {
-        basic = {
-            name = jumperName,
-            coordinate = {
-                x = jh_x,
-                z = jh_z
-            },
-            terrHeight = jh_t,
-            height = jh_y,
-            ["jumperInfo"] = 0
-        },
-        chute = {
-            setIndex = 0,
-            deploying = false,
-            setID = -1,
-            alt = -1,
-            board = {
-                setID = -1,
-                alt = -1
-            },
-            ["jumperInfo"] = 0
-        }
-    }
-    jumperInfo.basic.jumperInfo = jumperInfo
-    jumperInfo.chute.jumperInfo = jumperInfo
-
-    if data[jumperName] then
-        local _jumperInfo = data[jumperName]
-        _jumperInfo = nil
+    if data and data["processor"] then
+        local processor = data["processor"][name]
+        if processor then
+        	local timerID = processor.id
+        	if processor.running then
+        		EDX:disableTimer(timerID)
+        	end
+        	processor.tasks = nil
+            EDX:deleteTimer(timerID)
+            data["processor"][name] = nil
+            --log("processor released - "..name)
+        end
     end
-    data["jumpers"][jumperName] = jumperInfo
+end
 
-    log("registered - "..jumperName)
+function processorScheduler( name, key, task)
+    --log("processorScheduler - "..name)
+
+    if data and data["processor"] then
+        local processor = data["processor"][name]
+        processor.tasks[key] = task
+        if processor and processor.running == false then
+            processor.running = true
+            --log("processor awaken - "..name..", "..processor.id)
+            EDX:setTimer(processor.id, processor.interval)
+        end
+    end
+end
+--processor end
+
+function registerCompletion(callback)
+    table.insert(data["completion"], callback)
+end
+
+function register( jumperName) --this should be a single unit, a echelon or a group
+    --log("register - "..jumperName)
+	
+	local jumper = string.lower(jumperName)
+	if OFP:isGroup(jumper) then
+		local groupName = jumper
+		local size = OFP:getGroupSize(groupName)
+        for i = 0, size - 1 do
+            local member = OFP:getGroupMember(groupName, i)
+            register(member)
+        end
+	elseif OFP:isEchelon(jumper) then
+		local echelonName = jumper
+		local size = OFP:getEchelonSize(echelonName)
+		for i = 0, size - 1 do
+			local member = OFP:getEchelonMember(echelonName, i)
+			if OFP:isEchelon(member) == false then
+				register(member)
+			end
+		end
+	elseif EDX:isSoldier(jumper) == false then
+		log("cannot register jumper ["..tostring(jumper).."], this should be soldier, echelon or group")
+		return
+	end
+	
+	if not data["jumpers"][jumper] then
+	    local jumperInfo = {
+	        name = jumper,
+	        --position data
+			coordinate = { x = -1, y = -1, z = -1 },
+			extra = 0,
+			height_from_surface = -1,
+	        jump_height = -1,
+			--chute
+			chute_set = "",
+	        chute_gc_table = {},
+	        chute_deploy_index = 1,
+	        --bumper
+	        bumper_gc_table = {},
+	        max_bumper_setID = -1,
+	        --state
+	        jumped = false,
+			deploying = false,
+			deployed = false,
+	        completed = false
+	    }
+		data["jumpers"][jumper] = jumperInfo
+	
+	    --log("jumper registered - "..jumper)
+    end
+end
+
+function getRegisteredJumpers()
+	local jumpers = {}
+	for jumper, _ in pairs(data["jumpers"]) do
+		table.insert(jumpers, jumper)
+	end
+	return jumpers
 end
 
 function checkJumpState(vehicle, unit)
-    log("checkJumpState - "..vehicle..", "..unit)
-
-    if data["jumpers"][unit] then
-        if EDX:isAir(vehicle) and OFP:getHeight(vehicle) > data["params"].minJumpHeight then
-            onJumped(unit)
+	--log("checkJumpState - "..vehicle..", "..unit)
+    if data and EDX:isAir(vehicle) then
+        local jumperInfo = data["jumpers"][unit]
+        if jumperInfo then
+        	--log("jumper - "..jumperInfo.name)
+            local jump_height = OFP:getHeight(vehicle)
+            --log("jump height - "..jump_height)
+            if jump_height >= 50 then
+                jumperInfo.jump_height = jump_height
+                jumperInfo.jumped = true
+                onJumped( jumperInfo)
+                --return true
+			else
+				--log("jumper jumped too low - "..unit)
+            end
         end
     end
+    --return false
 end
 
-function onJumped(jumper)
-    log("onJumped - "..jumper)
+function onJumped( jumperInfo)
+	local jumper = jumperInfo.name
+    --log("onJumped - "..jumper)
 
-    local jumperInfo = data["jumpers"][jumper]
-
+    OFP:setInvulnerable(jumper, true)
+    --OFP:stop(jumper, "addtofront")
+	
+    --EDX:setTimer("updateChuteState", 250)
+    processorScheduler( "jumper", jumper, jumperInfo)
 end
 
-function jumperStateUpdator(timerID)
-    
+--[[
+function updateChuteState( timerID)
+	--log("\n")
+	--log("updateChuteState - "..tostring(timerID))
+	local allJumped = false
+	for jumper, jumperInfo in pairs(data["jumpers"]) do
+		if jumperInfo.jumped then
+			updateChutedeploy( jumper, jumperInfo)
+			allJumped = true
+		end
+	end
+	if allJumped == false then
+		EDX:disableTimer(timerID)
+		log("timer disabled")
+	else
+		EDX:setTimer(timerID, 250)
+	end
+	--log("\n")
+end
+--]]
+
+function jumperTaskProcessor( processor, timerID)
+	--log("jumperTaskProcessor")
+	local tasks = processor.tasks
+	local _next = next(tasks)
+	if _next then
+		for _, v in pairs(tasks) do
+			updateJumperState( v)
+		end
+		EDX:setTimer(timerID, processor.interval)
+	else
+		log("empty jumper task queue")
+	end
 end
 
-function updateJumperStates(jumperInfo)
-    
+function updateJumperState( jumperInfo)
+	if jumperInfo.jumped then
+		updateChutedeploy( jumperInfo)
+	end
 end
 
-function checkChuteState(setName, setID)
-    log("checkChuteState - "..setName..", "..setID)
+--deploying chute, update position data
+function updateChutedeploy( jumperInfo) 
+	local jumper = jumperInfo.name
+	--log("updateChutedeploy - "..jumper)
+	local deployed = jumperInfo.deployed
+	
+	local x, y, z = OFP:getPosition(jumper)
+	--log("x - "..x..", y - "..y..", z - "..z)
+	local terrain_height = OFP:getTerrainHeight(x, z)
+	if terrain_height < 0 then
+		terrain_height = 0
+	end
+	--log("terrain_height - "..terrain_height)
+	local height_from_surface = math.floor(y - terrain_height)
+--	if 	deployed and jumperInfo.height_from_surface == height_from_surface then
+--		jumperInfo.completed = true
+--		return
+	--else
+		jumperInfo.height_from_surface = height_from_surface
+	--log(jumper.." - "..height_from_surface)
+--	end
+	--log("height from surface - "..height_from_surface)
+	--when height_from_surface do not change twice, means jump completed
+	
+	local coordinate = jumperInfo.coordinate
+	coordinate.x = x
+	coordinate.y = y
+	coordinate.z = z
+	--log("coordinate updated - "..y)
+	
+	if deployed == true or jumperInfo.deploying == true then return end
+	
+	local distance_fallen = jumperInfo.jump_height - height_from_surface
+	--log("distance_fallen - "..distance_fallen)
+	if distance_fallen >= 20 and height_from_surface <= 100 then
+		--log("height_from_surface - "..height_from_surface)
+		jumperInfo.deploying = true
+		jumperInfo.extra = 0
+		jumperInfo.chute_set = data["deploy_chute_sets"][jumperInfo.chute_deploy_index]
+		jumperInfo.jump_height = nil
+		
+		--log("begin to deploy chute")
+		deploychute(jumperInfo)
+	end
+end
 
-    if setName == "dep8" or (string.len(setName) == 4 and string.sub(setName, 1, 3) == "dep") then
-        onChuteReady(data["jumperIndexes"]["chute"][setID])
-        return true
+function deploychute(jumperInfo)
+	--log("deploychute - "..jumperInfo.name)
+	--[[
+	if data["disposing"] then
+		log("deploychute - disposing")
+		log("jumperInfo.completed - "..tostring(jumperInfo.completed ))
+	end
+	--]]
+
+	if jumperInfo.completed == false then
+		if jumperInfo.height_from_surface <= 2 then
+			jumperInfo.completed = true
+		end
+		
+		local chute_gc_table = jumperInfo.chute_gc_table
+		if chute_gc_table[2] then
+			OFP:destroyEntitySet(chute_gc_table[1])
+			table.remove(chute_gc_table, 1)
+		end
+		
+		local bumper_gc_table = jumperInfo.bumper_gc_table
+		if bumper_gc_table[1] then
+			OFP:destroyEntitySet(bumper_gc_table[1])
+			table.remove(bumper_gc_table, 1)
+		end
+		
+		local coordinate = jumperInfo.coordinate
+		if jumperInfo.deploying then
+			local deploy_index = jumperInfo.chute_deploy_index
+			--log("deploy_index - "..deploy_index)
+			
+			--deploying chute update
+			if deploy_index <= 8 then
+				jumperInfo.extra = jumperInfo.extra + 0.9
+				jumperInfo.chute_set = data["deploy_chute_sets"][deploy_index]
+				jumperInfo.chute_deploy_index = deploy_index + 1
+			else
+				--log("deploying finished")
+				jumperInfo.extra = 7
+				jumperInfo.deploying = false
+				jumperInfo.deployed = true
+				jumperInfo.chute_set = "cht1"
+			end
+			
+			--max bumper
+			if deploy_index == 1 then
+				--log("spawning max bumper")
+				jumperInfo.max_bumper_setID = OFP:spawnEntitySetAtLocation("bumperset",coordinate.x, coordinate.y - 30, coordinate.z)
+			elseif deploy_index == 8 then
+				--log("recovering max bumper")
+				OFP:destroyEntitySet(jumperInfo.max_bumper_setID)
+				jumperInfo.max_bumper_setID = nil
+			end
+		else
+			----bumpers
+			local alt = coordinate.y - 3.9
+			--log("alt - "..alt)
+			local bumperSetID = OFP:spawnEntitySetAtLocation("bumperset", coordinate.x,  alt, coordinate.z)
+			table.insert(bumper_gc_table, bumperSetID)
+			--log("bumper setID - "..bumperSetID)
+		end
+		
+		--chute
+		local chuteSetID = OFP:spawnEntitySetAtLocation(jumperInfo.chute_set,coordinate.x, coordinate.y + jumperInfo.extra, coordinate.z)
+		table.insert(chute_gc_table, chuteSetID)
+		
+		data["setIndexes"][chuteSetID] = jumperInfo
+		--log("chute setID - "..chuteSetID)
+	else
+		recoverJumperInfo(jumperInfo)
+		checkCompletionState()
+	end
+end
+
+function recoverJumperInfo( jumperInfo)
+		local jumper = jumperInfo.name
+		--log("jump finished - "..jumper)
+		
+		OFP:setInvulnerable(jumper, false)
+		
+		--remove from processor
+		data["processor"]["jumper"]["tasks"][jumper] = nil
+		
+		for _, bumperSetID in pairs(jumperInfo.bumper_gc_table) do
+			OFP:destroyEntitySet(bumperSetID)
+		end
+		jumperInfo.bumper_gc_table = nil
+		
+		for _, chuteSetID in pairs(jumperInfo.chute_gc_table) do
+			OFP:destroyEntitySet(chuteSetID)
+		end
+		jumperInfo.chute_gc_table = nil
+		
+		jumperInfo.coordinate = nil
+		data["jumpers"][jumper] = nil
+		--log("jumperInfo recovered - "..jumper)
+end
+
+function checkCompletionState()
+	if next(data["jumpers"]) == nil then --all registered jumpers finished
+		--log("all jumpers finished")
+		
+		data["disposing"] = true
+		
+		--EDX:deleteTimer(data["timers"].chutedeploy)
+		--data["timers"] = nil
+		releaseProcessor("jumper")
+		data["processor"] = nil
+		
+		--OFP:destroyEntitySet(data["hid"])
+		--data["hid"] = nil
+		
+		data["jumpers"] = nil
+		data["setIndexes"] = nil
+		data["deploy_chute_sets"] = nil
+		
+		onCompleted(data["completion"])
+		data["completion"] = nil
+		
+		data = nil
     end
-    return false
 end
 
-function onChuteReady(chuteInfo)
-    log("onChuteReady - "..tostring(chuteInfo))
-
-    --update chute deploy index
-    local setIndex = chuteInfo.setIndex
-    if chuteInfo.deploying then
-        if chuteInfo.setIndex < 8 then
-            setIndex = setIndex + 1
-            chuteInfo.setIndex = setIndex
-        else
-            chuteInfo.deploying = false
-        end
-    end
-    --EDX:setTimer(xxx, xxx, chuteInfo) --need to check. 
-    --each jumper should have a single timer but this is too difficult
-    --so the only way to do this is running a single timer, and use a queue to store updatingNeeded chuteInfo
-    --when new item enqueue, start timer; when the queue is empty, freeze the timer
-    table.insert(data["chuteTaskQueue"], chuteInfo)
-    if data["timers"].chuteTaskProcessor.running == false then --awake processor
-        EDX:enableTimer(data["timers"].chuteTaskProcessor.timerID)
-    end
+function checkSpawnedSet(setName, setID)
+	--[[
+	if not data then
+		--log("data recovered")
+	end
+	if not data["setIndexes"] then
+		--log("setIndexes recovered")
+	end
+	if data["disposing"] then
+		--log("checkSpawnedSet - disposing")
+	end
+	--]]
+	if data and data["disposing"] == false then
+		local jumperInfo = data["setIndexes"][setID]
+		if jumperInfo then
+			if jumperInfo.completed then
+				--log("checkSpawnedSet - "..jumperInfo.name.." completed")
+			end
+			--log("setID checked - "..setID)
+			data["setIndexes"][setID] = nil
+			--log("deploychute after spawned ready - "..setID)
+			deploychute(jumperInfo)
+		end
+	end
 end
 
-function chuteTaskProcessor(timerID)
-    local tasks = data["chuteTaskQueue"]
-    --need lock here
-    for k, chuteInfo in pairs(tasks) do
-        updateChuteSet(chuteInfo)
-        table.remove(data["chuteTaskQueue"], k)
-    end
-
-    local processor = data["timers"].chuteTaskProcessor
-    if #data["chuteTaskQueue"] == 0 then --sleep
-        EDX:disableTimer(processor.timerID)
-        processor.running = false
-    else
-        EDX:setTimer(processor.timerID, processor.interval)
-    end
+function onCompleted(callbacks)
+	--log("onCompleted")
+	
+	for _, callback in pairs(callbacks) do
+		callback()
+	end
+	EDX:disableRootEvents(SCRIPT_NAME)
 end
 
-function updateChuteSet(chuteInfo)
-    log("updateChuteSet -"..tostring(chuteInfo))
-    
-    --destroy old set
-    OFP:destroyEntitySet(chuteInfo.setID)
-    OFP:destroyEntitySet(chuteInfo.board.setID)
-    log("chute sets recovered")
-
-    local jumperIndexes = data["jumperIndexes"]
-
-    --spawn new set
-    local basicInfo = chuteInfo.jumperInfo.basic
-    local boardInfo = chuteInfo.board
-    local coor = basicInfo.coordinate --this should refresh each time. so the jumper can change hit point a little
-    local stepLength = data["params"].stepLength
-    
-    local chuteIndex = chuteInfo.setIndex
-    log("chuteIndex - "..chuteIndex)
-    local chuteAlt = chuteInfo.alt + stepLength
-    log("chuteAlt - "..chuteAlt)
-    local chuteSetID = OFP:spawnEntitySetAtLocation(data["chuteSet"][chuteIndex], coor.x, chuteAlt, coor.z)
-    chuteInfo.alt = chuteAlt
-    chuteInfo.setID = chuteSetID
-    jumperIndexes.chute[chuteSetID] = chuteInfo
-    log("chuteSetID - "..chuteSetID)
-
-    local boardAlt = boardInfo.alt + stepLength
-    log("boardAlt - "..boardAlt)
-    local boardSetID = OFP:spawnEntitySetAtLocation(data["boardSet"], coor.x, boardAlt, coor.z)
-    boardInfo.alt = boardAlt
-    boardInfo.setID = boardSetID
-    jumperIndexes.board[boardSetID] = boardInfo;
-    log("boardSetID - "..boardSetID)
+function onDismount( vehicle, unit)
+	checkJumpState(vehicle, unit)
 end
 
+function onSpawnedReady( setName, setID)
+	checkSpawnedSet( setName, setID)
+end
