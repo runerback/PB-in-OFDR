@@ -14,9 +14,6 @@ function onDataReady()
         data["jumpers"] = {}
         data["setIndexes"] = {}
         data["deploy_chute_sets"] = {"dep1","dep2","dep3","dep4","dep5","dep6","dep7","dep8"}
-        --data["timers"] = {
-        --    chutedeploy = EDX:serialTimer("updateChuteState", -1)
-        --}
         data["processor"] = {
         	jumper = {
         		name = "jumperTaskProcessor",
@@ -28,7 +25,7 @@ function onDataReady()
         }
         data["disposing"] = false --if true, disable all Check functions
         
-        --data["hid"] = OFP:activateEntitySet("hid")
+        data["bumperhidset"] = OFP:activateEntitySet("bumperhidset")
         initializeProcessors()
     else
     end
@@ -86,24 +83,19 @@ function register( jumperName) --this should be a single unit, a echelon or a gr
     --log("register - "..jumperName)
 	
 	local jumper = string.lower(jumperName)
-	if OFP:isGroup(jumper) then
-		local groupName = jumper
-		local size = OFP:getGroupSize(groupName)
-        for i = 0, size - 1 do
-            local member = OFP:getGroupMember(groupName, i)
-            register(member)
-        end
-	elseif OFP:isEchelon(jumper) then
-		local echelonName = jumper
-		local size = OFP:getEchelonSize(echelonName)
-		for i = 0, size - 1 do
-			local member = OFP:getEchelonMember(echelonName, i)
-			if OFP:isEchelon(member) == false then
-				register(member)
+	if EDX:isSoldier(jumper) == false then
+		local members = EDX:grpToTable(jumper)
+		local _next = next(members)
+		if _next == nil then
+			log("cannot register jumper ["..tostring(jumper).."], this should be soldier, echelon or group")
+		else
+			for _, v in pairs(members) do
+				--log("member - "..tostring(v))
+				if v then
+					register( v)
+				end
 			end
 		end
-	elseif EDX:isSoldier(jumper) == false then
-		log("cannot register jumper ["..tostring(jumper).."], this should be soldier, echelon or group")
 		return
 	end
 	
@@ -115,6 +107,7 @@ function register( jumperName) --this should be a single unit, a echelon or a gr
 			extra = 0,
 			height_from_surface = -1,
 	        jump_height = -1,
+	        block_counter = 0, --counter to check whether jumper blocked such as jumped on building.
 			--chute
 			chute_set = "",
 	        chute_gc_table = {},
@@ -139,6 +132,7 @@ function getRegisteredJumpers()
 	for jumper, _ in pairs(data["jumpers"]) do
 		table.insert(jumpers, jumper)
 	end
+	--log("retuning "..#jumpers.." jumper")
 	return jumpers
 end
 
@@ -168,32 +162,12 @@ function onJumped( jumperInfo)
     --log("onJumped - "..jumper)
 
     OFP:setInvulnerable(jumper, true)
-    --OFP:stop(jumper, "addtofront")
+	if not OFP:isPlayer(jumper) and not OFP:isSecondaryPlayer(jumper) then
+		OFP:stop(jumper,"OVERRIDE")
+	end
 	
-    --EDX:setTimer("updateChuteState", 250)
     processorScheduler( "jumper", jumper, jumperInfo)
 end
-
---[[
-function updateChuteState( timerID)
-	--log("\n")
-	--log("updateChuteState - "..tostring(timerID))
-	local allJumped = false
-	for jumper, jumperInfo in pairs(data["jumpers"]) do
-		if jumperInfo.jumped then
-			updateChutedeploy( jumper, jumperInfo)
-			allJumped = true
-		end
-	end
-	if allJumped == false then
-		EDX:disableTimer(timerID)
-		log("timer disabled")
-	else
-		EDX:setTimer(timerID, 250)
-	end
-	--log("\n")
-end
---]]
 
 function jumperTaskProcessor( processor, timerID)
 	--log("jumperTaskProcessor")
@@ -206,6 +180,7 @@ function jumperTaskProcessor( processor, timerID)
 		EDX:setTimer(timerID, processor.interval)
 	else
 		log("empty jumper task queue")
+		processor.running = false
 	end
 end
 
@@ -229,15 +204,22 @@ function updateChutedeploy( jumperInfo)
 	end
 	--log("terrain_height - "..terrain_height)
 	local height_from_surface = math.floor(y - terrain_height)
---	if 	deployed and jumperInfo.height_from_surface == height_from_surface then
---		jumperInfo.completed = true
---		return
-	--else
+	if jumperInfo.height_from_surface == height_from_surface then --check whether jumper are blocked
+		local block_counter = jumperInfo.block_counter
+		block_counter = block_counter + 1
+		--log("block counter - "..block_counter)
+		if block_counter == 6 then
+			log("jumper blocked - "..jumper)
+			jumperInfo.completed = true
+		else
+			jumperInfo.block_counter = block_counter
+		end
+		return
+	else
 		jumperInfo.height_from_surface = height_from_surface
-	--log(jumper.." - "..height_from_surface)
---	end
-	--log("height from surface - "..height_from_surface)
-	--when height_from_surface do not change twice, means jump completed
+		--log("height from surface - "..height_from_surface)
+		jumperInfo.block_counter = 0
+	end
 	
 	local coordinate = jumperInfo.coordinate
 	coordinate.x = x
@@ -263,13 +245,7 @@ end
 
 function deploychute(jumperInfo)
 	--log("deploychute - "..jumperInfo.name)
-	--[[
-	if data["disposing"] then
-		log("deploychute - disposing")
-		log("jumperInfo.completed - "..tostring(jumperInfo.completed ))
-	end
-	--]]
-
+	
 	if jumperInfo.completed == false then
 		if jumperInfo.height_from_surface <= 2 then
 			jumperInfo.completed = true
@@ -282,7 +258,7 @@ function deploychute(jumperInfo)
 		end
 		
 		local bumper_gc_table = jumperInfo.bumper_gc_table
-		if bumper_gc_table[1] then
+		if bumper_gc_table[2] then
 			OFP:destroyEntitySet(bumper_gc_table[1])
 			table.remove(bumper_gc_table, 1)
 		end
@@ -302,7 +278,7 @@ function deploychute(jumperInfo)
 				jumperInfo.extra = 7
 				jumperInfo.deploying = false
 				jumperInfo.deployed = true
-				jumperInfo.chute_set = "cht1"
+				jumperInfo.chute_set = "chuteset"
 			end
 			
 			--max bumper
@@ -316,7 +292,7 @@ function deploychute(jumperInfo)
 			end
 		else
 			----bumpers
-			local alt = coordinate.y - 3.9
+			local alt = coordinate.y - 4.6
 			--log("alt - "..alt)
 			local bumperSetID = OFP:spawnEntitySetAtLocation("bumperset", coordinate.x,  alt, coordinate.z)
 			table.insert(bumper_gc_table, bumperSetID)
@@ -365,13 +341,11 @@ function checkCompletionState()
 		
 		data["disposing"] = true
 		
-		--EDX:deleteTimer(data["timers"].chutedeploy)
-		--data["timers"] = nil
 		releaseProcessor("jumper")
 		data["processor"] = nil
 		
-		--OFP:destroyEntitySet(data["hid"])
-		--data["hid"] = nil
+		OFP:destroyEntitySet(data["bumperhidset"])
+		data["bumperhidset"] = nil
 		
 		data["jumpers"] = nil
 		data["setIndexes"] = nil
@@ -385,17 +359,6 @@ function checkCompletionState()
 end
 
 function checkSpawnedSet(setName, setID)
-	--[[
-	if not data then
-		--log("data recovered")
-	end
-	if not data["setIndexes"] then
-		--log("setIndexes recovered")
-	end
-	if data["disposing"] then
-		--log("checkSpawnedSet - disposing")
-	end
-	--]]
 	if data and data["disposing"] == false then
 		local jumperInfo = data["setIndexes"][setID]
 		if jumperInfo then
@@ -426,3 +389,8 @@ end
 function onSpawnedReady( setName, setID)
 	checkSpawnedSet( setName, setID)
 end
+
+function onDeath(victim)
+	log("death - "..victim)
+end
+
