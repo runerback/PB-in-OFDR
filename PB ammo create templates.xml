@@ -1,0 +1,29 @@
+<EntityTemplate ID="1711051316{id:000}" Name="pbammobox{id}" Description="PB ammo box type {id}. {description}" FolderID="137948460788000009" ParentID="171105131400000">
+	<ParamSet ID="1711051316235{id:000}">
+		<ParamSet NestedAs="Id4" ID="1711051316934{id:000}">
+			<ParamSet NestedAs="Inventory" ID="6721013718768(id:000}">
+				<Param Name="item00" Group="DefaultGroup" Type="shortname" Value="{ammo0}" Flags="1" />
+				<Param Name="item00count" Group="DefaultGroup" Type="int" Value="{count0}" Flags="1" />
+				<Param Name="item01" Group="DefaultGroup" Type="shortname" Value="{ammo1}" Flags="1" />
+				<Param Name="item01count" Group="DefaultGroup" Type="int" Value="{count1}" Flags="1" />
+				<Param Name="item02" Group="DefaultGroup" Type="shortname" Value="{ammo2}" Flags="1" />
+				<Param Name="item02count" Group="DefaultGroup" Type="int" Value="{count2}" Flags="1" />
+				<Param Name="item03" Group="DefaultGroup" Type="shortname" Value="{ammo3}" Flags="1" />
+				<Param Name="item03count" Group="DefaultGroup" Type="int" Value="{count3}" Flags="1" />
+				<Param Name="item04" Group="DefaultGroup" Type="shortname" Value="{ammo4}" Flags="1" />
+				<Param Name="item04count" Group="DefaultGroup" Type="int" Value="{count4}" Flags="1" />
+				<Param Name="item05" Group="DefaultGroup" Type="shortname" Value="{ammo5}" Flags="1" />
+				<Param Name="item05count" Group="DefaultGroup" Type="int" Value="{count5}" Flags="1" />
+				<Param Name="item06" Group="DefaultGroup" Type="shortname" Value="{ammo6}" Flags="1" />
+				<Param Name="item06count" Group="DefaultGroup" Type="int" Value="{count6}" Flags="1" />
+				<Param Name="item07" Group="DefaultGroup" Type="shortname" Value="{ammo7}" Flags="1" />
+				<Param Name="item07count" Group="DefaultGroup" Type="int" Value="{count7}" Flags="1" />
+				<Param Name="item08" Group="DefaultGroup" Type="shortname" Value="{ammo8}" Flags="1" />
+				<Param Name="item08count" Group="DefaultGroup" Type="int" Value="{count8}" Flags="1" />
+				<Param Name="WeaponSlot1" Type="shortname" Value="{weapon1}" />
+				<Param Name="WeaponSlot2" Type="shortname" Value="{weapon2}" />
+				<Param Name="WeaponSlot3" Type="shortname" Value="{weapon3}" />
+			</ParamSet>
+		</ParamSet>
+	</ParamSet>
+</EntityTemplate>

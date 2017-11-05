@@ -1,0 +1,12 @@
+<EntityTemplate ID="171105131400000" Name="pbammobox" Description="PB ammo box" FolderID="137948460788000009" ParentID="68034375408728224">
+	<ParamSet ID="171105131401517235">
+		<ParamSet NestedAs="MissionEditor" ID="17110513147302">
+			<Param Name="TopDownImage" Group="DefaultGroup" Type="string" Value="Props/ml02uscrtsb.dds" Flags="5" Description="Name of image to use as 1:1 scale top-down view of template" />
+			<Param Name="TopDownMinSize" Group="DefaultGroup" Type="float" Value="5" Flags="5" Description="Size in pixels when icon starts to be displayed instead of top-down image" />
+			<Param Name="TopDownPxPerMtr" Type="float" Value="40" Flags="4" Description="Resolution of top-down image, in pixels per meter. This is only used when topDownSize is 0, otherwise topDownSize takes priority." />
+			<Param Name="TopDownSize" Group="DefaultGroup" Type="vector2" Value="0, 0" Flags="5" Description="Size of top-down image, in meters" />
+		</ParamSet>
+		<Param Name="objectID" Group="DefaultGroup" Type="shortname" Value="uscrtsb" Flags="1" />
+		<Param Name="objectType" Group="DefaultGroup" Type="shortname" Value="ml02" Flags="1" />
+	</ParamSet>
+</EntityTemplate>

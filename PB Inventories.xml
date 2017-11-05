@@ -1,0 +1,1128 @@
+<EntityTemplate ID="1711051316001" Name="pbammobox001" Description="PB ammo box type 1. 100 rd box 7.62 x 51mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235001">
+    <ParamSet ID="1711051316934001" NestedAs="ID4">
+      <ParamSet ID="61006654469335260" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am100box762ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316002" Name="pbammobox002" Description="PB ammo box type 2. 100 rd box 7.62 x 51mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235002">
+    <ParamSet ID="1711051316934002" NestedAs="ID4">
+      <ParamSet ID="61006655207532764" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am100box762fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316003" Name="pbammobox003" Description="PB ammo box type 3. 10 rd mag 5.8 x 42mm ball special" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235003">
+    <ParamSet ID="1711051316934003" NestedAs="ID4">
+      <ParamSet ID="61006664351115484" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am10mag58balls" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316004" Name="pbammobox004" Description="PB ammo box type 4. 10 rd mag 5.8 x 42mm FMJ special" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235004">
+    <ParamSet ID="1711051316934004" NestedAs="ID4">
+      <ParamSet ID="61006664938318044" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am10mag58fmjs" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316005" Name="pbammobox005" Description="PB ammo box type 5. 10 rd mag 5.8 x 42mm JHP special" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235005">
+    <ParamSet ID="1711051316934005" NestedAs="ID4">
+      <ParamSet ID="61006665525520604" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am10mag58jhps" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316006" Name="pbammobox006" Description="PB ammo box type 6. 10 rd mag 12.7 x 99mm APDS" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235006">
+    <ParamSet ID="1711051316934006" NestedAs="ID4">
+      <ParamSet ID="61006671884085468" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am10mag99apds" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316007" Name="pbammobox007" Description="PB ammo box type 7. 10 rd mag 12.7 x 99mm APHE" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235007">
+    <ParamSet ID="1711051316934007" NestedAs="ID4">
+      <ParamSet ID="61006673125599452" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am10mag99aphe" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316008" Name="pbammobox008" Description="PB ammo box type 8. 10 rd mag 12.7 x 99mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235008">
+    <ParamSet ID="1711051316934008" NestedAs="ID4">
+      <ParamSet ID="61006671246551260" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am10mag99fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316009" Name="pbammobox009" Description="PB ammo box type 9. 15 rd clip 9 x 19mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235009">
+    <ParamSet ID="1711051316934009" NestedAs="ID4">
+      <ParamSet ID="61006033729120476" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am15clip9ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316010" Name="pbammobox010" Description="PB ammo box type 10. 15 rd clip 9 x 19mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235010">
+    <ParamSet ID="1711051316934010" NestedAs="ID4">
+      <ParamSet ID="61006380262516956" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am15clip9fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316011" Name="pbammobox011" Description="PB ammo box type 11. 15 rd clip 9 x 19mm JHP" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235011">
+    <ParamSet ID="1711051316934011" NestedAs="ID4">
+      <ParamSet ID="61006381470476508" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am15clip9jhp" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316012" Name="pbammobox012" Description="PB ammo box type 12. 200 rd box 5.56 x 45mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235012">
+    <ParamSet ID="1711051316934012" NestedAs="ID4">
+      <ParamSet ID="61006394623813852" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am200box556ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316013" Name="pbammobox013" Description="PB ammo box type 13. 200 rd box 5.56 x 45mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235013">
+    <ParamSet ID="1711051316934013" NestedAs="ID4">
+      <ParamSet ID="61006395311679708" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am200box556fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316014" Name="pbammobox014" Description="PB ammo box type 14. 200 rd box 5.56 x 45mm JHP" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235014">
+    <ParamSet ID="1711051316934014" NestedAs="ID4">
+      <ParamSet ID="61006395949213916" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am200box556jhp" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316015" Name="pbammobox015" Description="PB ammo box type 15. 20 rd mag 7.62 x 51mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235015">
+    <ParamSet ID="1711051316934015" NestedAs="ID4">
+      <ParamSet ID="61006396519639260" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am20mag762ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316016" Name="pbammobox016" Description="PB ammo box type 16. 20 rd mag 7.62 x 51mm ball special" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235016">
+    <ParamSet ID="1711051316934016" NestedAs="ID4">
+      <ParamSet ID="61006397626935516" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am20mag762balls" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316017" Name="pbammobox017" Description="PB ammo box type 17. 20 rd mag 7.62 x 51mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235017">
+    <ParamSet ID="1711051316934017" NestedAs="ID4">
+      <ParamSet ID="61006397106841820" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am20mag762fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316018" Name="pbammobox018" Description="PB ammo box type 18. 20 rd mag 7.62 x 51mm FMJ special" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235018">
+    <ParamSet ID="1711051316934018" NestedAs="ID4">
+      <ParamSet ID="61006398214138076" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am20mag762fmjs" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316019" Name="pbammobox019" Description="PB ammo box type 19. 20 rd mag 7.62 x 51mm JHP special" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235019">
+    <ParamSet ID="1711051316934019" NestedAs="ID4">
+      <ParamSet ID="61006653345261788" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am20mag762jhps" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316020" Name="pbammobox020" Description="PB ammo box type 20. 30 rd mag 5.56 x 45mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235020">
+    <ParamSet ID="1711051316934020" NestedAs="ID4">
+      <ParamSet ID="61006392090454236" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag556ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316021" Name="pbammobox021" Description="PB ammo box type 21. 30 rd mag 5.56 x 45mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235021">
+    <ParamSet ID="1711051316934021" NestedAs="ID4">
+      <ParamSet ID="61006392660879580" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag556fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316022" Name="pbammobox022" Description="PB ammo box type 22. 30 rd mag 5.56 x 45mm JHP" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235022">
+    <ParamSet ID="1711051316934022" NestedAs="ID4">
+      <ParamSet ID="61006393214527708" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag556jhp" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316023" Name="pbammobox023" Description="PB ammo box type 23. 30 rd mag 5.56 x 45mm subsonic" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235023">
+    <ParamSet ID="1711051316934023" NestedAs="ID4">
+      <ParamSet ID="61006393852061916" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag556sub" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316024" Name="pbammobox024" Description="PB ammo box type 24. 30 rd mag 5.8 x 42mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235024">
+    <ParamSet ID="1711051316934024" NestedAs="ID4">
+      <ParamSet ID="61006656281274588" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag58ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316025" Name="pbammobox025" Description="PB ammo box type 25. 30 rd mag 5.8 x 42mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235025">
+    <ParamSet ID="1711051316934025" NestedAs="ID4">
+      <ParamSet ID="61006663512254684" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag58fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316026" Name="pbammobox026" Description="PB ammo box type 26. 30 rd mag 7.62 x 39mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235026">
+    <ParamSet ID="1711051316934026" NestedAs="ID4">
+      <ParamSet ID="61006667538786524" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag76ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316027" Name="pbammobox027" Description="PB ammo box type 27. 30 rd mag 7.62 x 39mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235027">
+    <ParamSet ID="1711051316934027" NestedAs="ID4">
+      <ParamSet ID="61006670055368924" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag76fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316028" Name="pbammobox028" Description="PB ammo box type 28. 30 rd mag 9 x 19mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235028">
+    <ParamSet ID="1711051316934028" NestedAs="ID4">
+      <ParamSet ID="61006384708479196" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag9ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316029" Name="pbammobox029" Description="PB ammo box type 29. 30 rd mag 9 x 19mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235029">
+    <ParamSet ID="1711051316934029" NestedAs="ID4">
+      <ParamSet ID="61006385564117212" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag9fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316030" Name="pbammobox030" Description="PB ammo box type 30. 30 rd mag 9 x 19mm JHP" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235030">
+    <ParamSet ID="1711051316934030" NestedAs="ID4">
+      <ParamSet ID="61006386251983068" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am30mag9jhp" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316031" Name="pbammobox031" Description="PB ammo box type 31. 50 rd mag 5.8 x 21mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235031">
+    <ParamSet ID="1711051316934031" NestedAs="ID4">
+      <ParamSet ID="61006387510274268" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am50mag58ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316032" Name="pbammobox032" Description="PB ammo box type 32. 50 rd mag 5.8 x 21mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235032">
+    <ParamSet ID="1711051316934032" NestedAs="ID4">
+      <ParamSet ID="61006388047145180" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am50mag58fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316033" Name="pbammobox033" Description="PB ammo box type 33. 50 rd mag 5.8 x 21mm JHP" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235033">
+    <ParamSet ID="1711051316934033" NestedAs="ID4">
+      <ParamSet ID="61006388684679388" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am50mag58jhp" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316034" Name="pbammobox034" Description="PB ammo box type 34. 5 rd mag 12.7 x 108mm APDS" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235034">
+    <ParamSet ID="1711051316934034" NestedAs="ID4">
+      <ParamSet ID="61006675507964124" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am5mag108apds" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316035" Name="pbammobox035" Description="PB ammo box type 35. 5 rd mag 12.7 x 108mm APHE" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235035">
+    <ParamSet ID="1711051316934035" NestedAs="ID4">
+      <ParamSet ID="61006676715923676" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am5mag108aphe" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316036" Name="pbammobox036" Description="PB ammo box type 36. 5 rd mag 12.7 x 108mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235036">
+    <ParamSet ID="1711051316934036" NestedAs="ID4">
+      <ParamSet ID="61006674903984348" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am5mag108fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316037" Name="pbammobox037" Description="PB ammo box type 37. 40 x 46mm drum HE (M386, M406) Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235037">
+    <ParamSet ID="1711051316934037" NestedAs="ID4">
+      <ParamSet ID="65094367931558122" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am6drum46he" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316038" Name="pbammobox038" Description="PB ammo box type 38. 40 x 46mm drum HEDP (M433) Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235038">
+    <ParamSet ID="1711051316934038" NestedAs="ID4">
+      <ParamSet ID="65094368736864490" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am6drum46hedp" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316039" Name="pbammobox039" Description="PB ammo box type 39. 75 rd drum 5.8 x 42mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235039">
+    <ParamSet ID="1711051316934039" NestedAs="ID4">
+      <ParamSet ID="61006666062391516" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am75mag58ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316040" Name="pbammobox040" Description="PB ammo box type 40. 75 rd drum 5.8 x 42mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235040">
+    <ParamSet ID="1711051316934040" NestedAs="ID4">
+      <ParamSet ID="61006666733480156" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am75mag58fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316041" Name="pbammobox041" Description="PB ammo box type 41. 75 rd drum 7.62 x 39mm ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235041">
+    <ParamSet ID="1711051316934041" NestedAs="ID4">
+      <ParamSet ID="63975330439522524" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am75mag76ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316042" Name="pbammobox042" Description="PB ammo box type 42. 75 rd drum 7.62 x 39mm FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235042">
+    <ParamSet ID="1711051316934042" NestedAs="ID4">
+      <ParamSet ID="64208465972193500" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am75mag76fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316043" Name="pbammobox043" Description="PB ammo box type 43. 7 rd clip .45 Cal ball" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235043">
+    <ParamSet ID="1711051316934043" NestedAs="ID4">
+      <ParamSet ID="61006382275782876" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am7clip45ball" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316044" Name="pbammobox044" Description="PB ammo box type 44. 7 rd clip .45 Cal FMJ" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235044">
+    <ParamSet ID="1711051316934044" NestedAs="ID4">
+      <ParamSet ID="61006383164975324" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am7clip45fmj" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316045" Name="pbammobox045" Description="PB ammo box type 45. 7 rd clip .45 Cal JHP" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235045">
+    <ParamSet ID="1711051316934045" NestedAs="ID4">
+      <ParamSet ID="61006383886395612" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="am7clip45jhp" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316046" Name="pbammobox046" Description="PB ammo box type 46. M67 Frag Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235046">
+    <ParamSet ID="1711051316934046" NestedAs="ID4">
+      <ParamSet ID="63182238504216796" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex01fraggren" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316047" Name="pbammobox047" Description="PB ammo box type 47. M18 Smoke Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235047">
+    <ParamSet ID="1711051316934047" NestedAs="ID4">
+      <ParamSet ID="63182240517482716" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex02smoke" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316048" Name="pbammobox048" Description="PB ammo box type 48. M18 Claymore" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235048">
+    <ParamSet ID="1711051316934048" NestedAs="ID4">
+      <ParamSet ID="66417472667936823" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex09claymore" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316049" Name="pbammobox049" Description="PB ammo box type 49. M14 Antipersonnel Mine" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235049">
+    <ParamSet ID="1711051316934049" NestedAs="ID4">
+      <ParamSet ID="66746563653560154" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex10apmine" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316050" Name="pbammobox050" Description="PB ammo box type 50. M21 Antitank Mine" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235050">
+    <ParamSet ID="1711051316934050" NestedAs="ID4">
+      <ParamSet ID="66746564341426010" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex11atmine" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316051" Name="pbammobox051" Description="PB ammo box type 51. Demolition Charge" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235051">
+    <ParamSet ID="1711051316934051" NestedAs="ID4">
+      <ParamSet ID="66530714069526583" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex13demchg" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316052" Name="pbammobox052" Description="PB ammo box type 52. Type 86 Frag Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235052">
+    <ParamSet ID="1711051316934052" NestedAs="ID4">
+      <ParamSet ID="63876517738604414" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex14fraggren" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316053" Name="pbammobox053" Description="PB ammo box type 53. RDG2 Smoke Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235053">
+    <ParamSet ID="1711051316934053" NestedAs="ID4">
+      <ParamSet ID="63876520724948862" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex15smoke" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316054" Name="pbammobox054" Description="PB ammo box type 54. POMZ2 Claymore" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235054">
+    <ParamSet ID="1711051316934054" NestedAs="ID4">
+      <ParamSet ID="66417817506834487" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex22claymore" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316055" Name="pbammobox055" Description="PB ammo box type 55. Type 72 Antipersonnel Mine" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235055">
+    <ParamSet ID="1711051316934055" NestedAs="ID4">
+      <ParamSet ID="66746564760856410" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex23apmine" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316056" Name="pbammobox056" Description="PB ammo box type 56. TM62 Antitank Mine" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235056">
+    <ParamSet ID="1711051316934056" NestedAs="ID4">
+      <ParamSet ID="66746564962183002" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex24atmine" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316057" Name="pbammobox057" Description="PB ammo box type 57. 35 x 32mm HE Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235057">
+    <ParamSet ID="1711051316934057" NestedAs="ID4">
+      <ParamSet ID="64207744362899676" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex34hegren35" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316058" Name="pbammobox058" Description="PB ammo box type 58. 35 x 32mm HEDP Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235058">
+    <ParamSet ID="1711051316934058" NestedAs="ID4">
+      <ParamSet ID="64677227092797660" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex35hedpgren35" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316059" Name="pbammobox059" Description="PB ammo box type 59. 40 x 46mm HE Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235059">
+    <ParamSet ID="1711051316934059" NestedAs="ID4">
+      <ParamSet ID="62863951233837276" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex36uhegren40" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316060" Name="pbammobox060" Description="PB ammo box type 60. 40 x 46mm HEDP Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235060">
+    <ParamSet ID="1711051316934060" NestedAs="ID4">
+      <ParamSet ID="64687918208018652" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex37uhedpgren40" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316061" Name="pbammobox061" Description="PB ammo box type 61. FGM-148 Javelin missile" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235061">
+    <ParamSet ID="1711051316934061" NestedAs="ID4">
+      <ParamSet ID="63138753392961756" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex49javelin" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316062" Name="pbammobox062" Description="PB ammo box type 62. 120mm HE rocket" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235062">
+    <ParamSet ID="1711051316934062" NestedAs="ID4">
+      <ParamSet ID="65397222191163447" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex67queenbee" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316063" Name="pbammobox063" Description="PB ammo box type 63. 120mm HEAT rocket" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235063">
+    <ParamSet ID="1711051316934063" NestedAs="ID4">
+      <ParamSet ID="65397246266468407" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex67queenheat" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316064" Name="pbammobox064" Description="PB ammo box type 64. 83mm HEAT rocket" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235064">
+    <ParamSet ID="1711051316934064" NestedAs="ID4">
+      <ParamSet ID="65397051336714295" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex68smawheat" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316065" Name="pbammobox065" Description="PB ammo box type 65. 83mm HEF rocket" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235065">
+    <ParamSet ID="1711051316934065" NestedAs="ID4">
+      <ParamSet ID="65397080461961271" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex69smawhef" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316066" Name="pbammobox066" Description="PB ammo box type 66. FIM-92A missile" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235066">
+    <ParamSet ID="1711051316934066" NestedAs="ID4">
+      <ParamSet ID="65618957462694122" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex72fim92a" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316067" Name="pbammobox067" Description="PB ammo box type 67. QW-2 Vanguard 2 missile" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235067">
+    <ParamSet ID="1711051316934067" NestedAs="ID4">
+      <ParamSet ID="66400780738128046" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex73qw2sam" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316068" Name="pbammobox068" Description="PB ammo box type 68. IR Strobe Grenade" FolderID="137948460788000019" ParentID="171105131400000">
+  <ParamSet ID="1711051316235068">
+    <ParamSet ID="1711051316934068" NestedAs="ID4">
+      <ParamSet ID="66381298454784060" NestedAs="Inventory">
+        <Param Name="item00" Group="DefaultGroup" Type="shortname" Value="ex80irstrobe" Flags="1" />
+        <Param Name="item00count" Group="DefaultGroup" Type="int" Value="1" Flags="1" />
+      </ParamSet>
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316069" Name="pbammobox069" Description="PB ammo box type 69. FGM-148 Anti-Tank Missile CLU" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235069">
+    <ParamSet ID="1711051316934069" NestedAs="ID4">
+      <ParamSet ID="62048110584031452" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316070" Name="pbammobox070" Description="PB ammo box type 70. SMAW 83mm Rocket Launcher" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235070">
+    <ParamSet ID="1711051316934070" NestedAs="ID4">
+      <ParamSet ID="62048112530188508" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316071" Name="pbammobox071" Description="PB ammo box type 71. PF98 120mm Rocket Launcher" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235071">
+    <ParamSet ID="1711051316934071" NestedAs="ID4">
+      <ParamSet ID="65396643457953300" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316072" Name="pbammobox072" Description="PB ammo box type 72. FIM-92A Anti Aircraft Missile Launcher" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235072">
+    <ParamSet ID="1711051316934072" NestedAs="ID4">
+      <ParamSet ID="62048119341738204" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316073" Name="pbammobox073" Description="PB ammo box type 73. QW-2 Anti Aircraft Missile" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235073">
+    <ParamSet ID="1711051316934073" NestedAs="ID4">
+      <ParamSet ID="62048120834910428" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316074" Name="pbammobox074" Description="PB ammo box type 74. M16A4S ACOG Assault Rifle (Semi working)" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235074">
+    <ParamSet ID="1711051316934074" NestedAs="ID4">
+      <ParamSet ID="60311596158707934" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316075" Name="pbammobox075" Description="PB ammo box type 75. M16A4S CQB Assault Rifle (Semi working)" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235075">
+    <ParamSet ID="1711051316934075" NestedAs="ID4">
+      <ParamSet ID="60311596158707933" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316076" Name="pbammobox076" Description="PB ammo box type 76. M16A4S NO Assault Rifle (Semi working)" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235076">
+    <ParamSet ID="1711051316934076" NestedAs="ID4">
+      <ParamSet ID="60311506803255517" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316077" Name="pbammobox077" Description="PB ammo box type 77. M4A1CQB CCO Assault Rifle (Semi working)" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235077">
+    <ParamSet ID="1711051316934077" NestedAs="ID4">
+      <ParamSet ID="60337337238055135" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316078" Name="pbammobox078" Description="PB ammo box type 78. M4A1S ACOG Assault Rifle (Semi working)" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235078">
+    <ParamSet ID="1711051316934078" NestedAs="ID4">
+      <ParamSet ID="60337337238055134" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316079" Name="pbammobox079" Description="PB ammo box type 79. M4A1S CQB Assault Rifle (Semi working)" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235079">
+    <ParamSet ID="1711051316934079" NestedAs="ID4">
+      <ParamSet ID="60337337238055133" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316080" Name="pbammobox080" Description="PB ammo box type 80. M4A1S NO Assault Rifle (Semi working)" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235080">
+    <ParamSet ID="1711051316934080" NestedAs="ID4">
+      <ParamSet ID="60311601175095517" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316081" Name="pbammobox081" Description="PB ammo box type 81. Mk16 Mod 0 A CQB Assault Rifle (Semi working)" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235081">
+    <ParamSet ID="1711051316934081" NestedAs="ID4">
+      <ParamSet ID="60337349636417757" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316082" Name="pbammobox082" Description="PB ammo box type 82. Mk48 Mod 0 NO LS Medium Machine Gun (Semi working)" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235082">
+    <ParamSet ID="1711051316934082" NestedAs="ID4">
+      <ParamSet ID="60948135904569565" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316083" Name="pbammobox083" Description="PB ammo box type 83. QSZ92 Pistol" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235083">
+    <ParamSet ID="1711051316934083" NestedAs="ID4">
+      <ParamSet ID="58818206906738837" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316084" Name="pbammobox084" Description="PB ammo box type 84. MEU (SOC) Pistol" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235084">
+    <ParamSet ID="1711051316934084" NestedAs="ID4">
+      <ParamSet ID="58815945807784085" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316085" Name="pbammobox085" Description="PB ammo box type 85. MP5A4 Sub-Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235085">
+    <ParamSet ID="1711051316934085" NestedAs="ID4">
+      <ParamSet ID="60948072788682972" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316086" Name="pbammobox086" Description="PB ammo box type 86. MP5A4CQB CCO Sub-Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235086">
+    <ParamSet ID="1711051316934086" NestedAs="ID4">
+      <ParamSet ID="60948074852280540" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316087" Name="pbammobox087" Description="PB ammo box type 87. MP5A4CQB Sub-Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235087">
+    <ParamSet ID="1711051316934087" NestedAs="ID4">
+      <ParamSet ID="60948076395784412" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316088" Name="pbammobox088" Description="PB ammo box type 88. QCQ-05 Sub-Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235088">
+    <ParamSet ID="1711051316934088" NestedAs="ID4">
+      <ParamSet ID="60948088341162204" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316089" Name="pbammobox089" Description="PB ammo box type 89. QCQ-05M Sub-Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235089">
+    <ParamSet ID="1711051316934089" NestedAs="ID4">
+      <ParamSet ID="60948089817557212" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316090" Name="pbammobox090" Description="PB ammo box type 90. Infantry M16A4 Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235090">
+    <ParamSet ID="1711051316934090" NestedAs="ID4">
+      <ParamSet ID="60311491686983900" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316091" Name="pbammobox091" Description="PB ammo box type 91. Infantry M16A4CQB Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235091">
+    <ParamSet ID="1711051316934091" NestedAs="ID4">
+      <ParamSet ID="60311503162599644" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316092" Name="pbammobox092" Description="PB ammo box type 92. M16A4M Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235092">
+    <ParamSet ID="1711051316934092" NestedAs="ID4">
+      <ParamSet ID="60311503665916124" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316093" Name="pbammobox093" Description="PB ammo box type 93. M16A4A Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235093">
+    <ParamSet ID="1711051316934093" NestedAs="ID4">
+      <ParamSet ID="60948100370426076" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316094" Name="pbammobox094" Description="PB ammo box type 94. M16A4NO Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235094">
+    <ParamSet ID="1711051316934094" NestedAs="ID4">
+      <ParamSet ID="60311506803255516" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316095" Name="pbammobox095" Description="PB ammo box type 95. M16A4S Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235095">
+    <ParamSet ID="1711051316934095" NestedAs="ID4">
+      <ParamSet ID="60311596158707932" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316096" Name="pbammobox096" Description="PB ammo box type 96. M4A1 Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235096">
+    <ParamSet ID="1711051316934096" NestedAs="ID4">
+      <ParamSet ID="60337337238055132" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316097" Name="pbammobox097" Description="PB ammo box type 97. M4A1CQB Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235097">
+    <ParamSet ID="1711051316934097" NestedAs="ID4">
+      <ParamSet ID="60311599077943516" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316098" Name="pbammobox098" Description="PB ammo box type 98. M4A1M Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235098">
+    <ParamSet ID="1711051316934098" NestedAs="ID4">
+      <ParamSet ID="60311600134908124" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316099" Name="pbammobox099" Description="PB ammo box type 99. M4A1A Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235099">
+    <ParamSet ID="1711051316934099" NestedAs="ID4">
+      <ParamSet ID="60948107198752988" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316100" Name="pbammobox100" Description="PB ammo box type 100. M4A1NO Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235100">
+    <ParamSet ID="1711051316934100" NestedAs="ID4">
+      <ParamSet ID="60311601175095516" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316101" Name="pbammobox101" Description="PB ammo box type 101. M4A1S Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235101">
+    <ParamSet ID="1711051316934101" NestedAs="ID4">
+      <ParamSet ID="60311601980401884" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316102" Name="pbammobox102" Description="PB ammo box type 102. Mk16 Mod 0 Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235102">
+    <ParamSet ID="1711051316934102" NestedAs="ID4">
+      <ParamSet ID="58818535639509141" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316103" Name="pbammobox103" Description="PB ammo box type 103. Mk17 Mod 0 Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235103">
+    <ParamSet ID="1711051316934103" NestedAs="ID4">
+      <ParamSet ID="60311603792341212" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316104" Name="pbammobox104" Description="PB ammo box type 104. Mk16 Mod 0 S CQB Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235104">
+    <ParamSet ID="1711051316934104" NestedAs="ID4">
+      <ParamSet ID="60311604664756444" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316105" Name="pbammobox105" Description="PB ammo box type 105. Mk17 Mod 0 M Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235105">
+    <ParamSet ID="1711051316934105" NestedAs="ID4">
+      <ParamSet ID="60311606594136284" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316106" Name="pbammobox106" Description="PB ammo box type 106. Mk16 Mod 0 A Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235106">
+    <ParamSet ID="1711051316934106" NestedAs="ID4">
+      <ParamSet ID="60337349636417756" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316107" Name="pbammobox107" Description="PB ammo box type 107. Mk17 Mod 0 NO Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235107">
+    <ParamSet ID="1711051316934107" NestedAs="ID4">
+      <ParamSet ID="60311611375642844" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316108" Name="pbammobox108" Description="PB ammo box type 108. Mk16 Mod 0 S Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235108">
+    <ParamSet ID="1711051316934108" NestedAs="ID4">
+      <ParamSet ID="60311612315166940" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316109" Name="pbammobox109" Description="PB ammo box type 109. QBZ95 Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235109">
+    <ParamSet ID="1711051316934109" NestedAs="ID4">
+      <ParamSet ID="58818309147093141" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316110" Name="pbammobox110" Description="PB ammo box type 110. QBZ95M Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235110">
+    <ParamSet ID="1711051316934110" NestedAs="ID4">
+      <ParamSet ID="60948112315803868" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316111" Name="pbammobox111" Description="PB ammo box type 111. QBZ95A Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235111">
+    <ParamSet ID="1711051316934111" NestedAs="ID4">
+      <ParamSet ID="60948115537029340" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316112" Name="pbammobox112" Description="PB ammo box type 112. Type 81-1 Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235112">
+    <ParamSet ID="1711051316934112" NestedAs="ID4">
+      <ParamSet ID="59627624511308290" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316113" Name="pbammobox113" Description="PB ammo box type 113. Type 81-1M Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235113">
+    <ParamSet ID="1711051316934113" NestedAs="ID4">
+      <ParamSet ID="60311628991719644" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316114" Name="pbammobox114" Description="PB ammo box type 114. Type 81-1A Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235114">
+    <ParamSet ID="1711051316934114" NestedAs="ID4">
+      <ParamSet ID="60948120603748572" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316115" Name="pbammobox115" Description="PB ammo box type 115. M249 Light Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235115">
+    <ParamSet ID="1711051316934115" NestedAs="ID4">
+      <ParamSet ID="60948123741087964" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316116" Name="pbammobox116" Description="PB ammo box type 116. QBB95 Light Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235116">
+    <ParamSet ID="1711051316934116" NestedAs="ID4">
+      <ParamSet ID="60948126626769116" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316117" Name="pbammobox117" Description="PB ammo box type 117. Infantry M240G Medium Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235117">
+    <ParamSet ID="1711051316934117" NestedAs="ID4">
+      <ParamSet ID="60948128975579356" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316118" Name="pbammobox118" Description="PB ammo box type 118. Mk48 Mod 0 Medium Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235118">
+    <ParamSet ID="1711051316934118" NestedAs="ID4">
+      <ParamSet ID="60948130149984476" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316119" Name="pbammobox119" Description="PB ammo box type 119. Mk48 Mod 0 CQB Medium Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235119">
+    <ParamSet ID="1711051316934119" NestedAs="ID4">
+      <ParamSet ID="60948131659933916" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316120" Name="pbammobox120" Description="PB ammo box type 120. Mk48 Mod 0 M Medium Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235120">
+    <ParamSet ID="1711051316934120" NestedAs="ID4">
+      <ParamSet ID="60948132985333980" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316121" Name="pbammobox121" Description="PB ammo box type 121. Mk48 Mod 0 A Medium Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235121">
+    <ParamSet ID="1711051316934121" NestedAs="ID4">
+      <ParamSet ID="60948134428174556" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316122" Name="pbammobox122" Description="PB ammo box type 122. Mk48 Mod 0 NO Medium Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235122">
+    <ParamSet ID="1711051316934122" NestedAs="ID4">
+      <ParamSet ID="60948135904569564" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316123" Name="pbammobox123" Description="PB ammo box type 123. Infantry Type 67-II Medium Machine Gun" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235123">
+    <ParamSet ID="1711051316934123" NestedAs="ID4">
+      <ParamSet ID="60948137297078492" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316124" Name="pbammobox124" Description="PB ammo box type 124. M32 Multiple Grenade Launcher" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235124">
+    <ParamSet ID="1711051316934124" NestedAs="ID4">
+      <ParamSet ID="60948138874136796" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316125" Name="pbammobox125" Description="PB ammo box type 125. M21 Sniper Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235125">
+    <ParamSet ID="1711051316934125" NestedAs="ID4">
+      <ParamSet ID="60948148336486620" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316126" Name="pbammobox126" Description="PB ammo box type 126. QBU88 Sniper Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235126">
+    <ParamSet ID="1711051316934126" NestedAs="ID4">
+      <ParamSet ID="60948146692319452" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316127" Name="pbammobox127" Description="PB ammo box type 127. M82 Anti Material Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235127">
+    <ParamSet ID="1711051316934127" NestedAs="ID4">
+      <ParamSet ID="60311630048684252" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316128" Name="pbammobox128" Description="PB ammo box type 128. M82 Night Ops Anti Material Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235128">
+    <ParamSet ID="1711051316934128" NestedAs="ID4">
+      <ParamSet ID="67965202853312672" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316129" Name="pbammobox129" Description="PB ammo box type 129. M99 Anti Material Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235129">
+    <ParamSet ID="1711051316934129" NestedAs="ID4">
+      <ParamSet ID="60311631743183068" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316130" Name="pbammobox130" Description="PB ammo box type 130. QBZ95 Night Ops" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235130">
+    <ParamSet ID="1711051316934130" NestedAs="ID4">
+      <ParamSet ID="65269231889967338" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316131" Name="pbammobox131" Description="PB ammo box type 131. Type 81-1 Night Ops" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235131">
+    <ParamSet ID="1711051316934131" NestedAs="ID4">
+      <ParamSet ID="65269242694494442" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>
+<EntityTemplate ID="1711051316132" Name="pbammobox132" Description="PB ammo box type 132. Infantry M16A4CQB CCO Assault Rifle" FolderID="137948460788000029" ParentID="171105131400000">
+  <ParamSet ID="1711051316235132">
+    <ParamSet ID="1711051316934132" NestedAs="ID4">
+      <ParamSet ID="64760248371013694" NestedAs="Inventory" />
+    </ParamSet>
+  </ParamSet>
+</EntityTemplate>

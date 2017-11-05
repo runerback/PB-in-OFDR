@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<inventories>
+	<ammo>
+		<inventory ID="61006654469335260" Name="am100box762ball" Description="100 rd box 7.62 x 51mm ball" Type="Ammo" />
+		<inventory ID="61006655207532764" Name="am100box762fmj" Description="100 rd box 7.62 x 51mm FMJ" Type="Ammo" />
+		<inventory ID="61006664351115484" Name="am10mag58balls" Description="10 rd mag 5.8 x 42mm ball special" Type="Ammo" />
+		<inventory ID="61006664938318044" Name="am10mag58fmjs" Description="10 rd mag 5.8 x 42mm FMJ special" Type="Ammo" />
+		<inventory ID="61006665525520604" Name="am10mag58jhps" Description="10 rd mag 5.8 x 42mm JHP special" Type="Ammo" />
+		<inventory ID="61006671884085468" Name="am10mag99apds" Description="10 rd mag 12.7 x 99mm APDS" Type="Ammo" />
+		<inventory ID="61006673125599452" Name="am10mag99aphe" Description="10 rd mag 12.7 x 99mm APHE" Type="Ammo" />
+		<inventory ID="61006671246551260" Name="am10mag99fmj" Description="10 rd mag 12.7 x 99mm FMJ" Type="Ammo" />
+		<inventory ID="61006033729120476" Name="am15clip9ball" Description="15 rd clip 9 x 19mm ball" Type="Ammo" />
+		<inventory ID="61006380262516956" Name="am15clip9fmj" Description="15 rd clip 9 x 19mm FMJ" Type="Ammo" />
+		<inventory ID="61006381470476508" Name="am15clip9jhp" Description="15 rd clip 9 x 19mm JHP" Type="Ammo" />
+		<inventory ID="61006394623813852" Name="am200box556ball" Description="200 rd box 5.56 x 45mm ball" Type="Ammo" />
+		<inventory ID="61006395311679708" Name="am200box556fmj" Description="200 rd box 5.56 x 45mm FMJ" Type="Ammo" />
+		<inventory ID="61006395949213916" Name="am200box556jhp" Description="200 rd box 5.56 x 45mm JHP" Type="Ammo" />
+		<inventory ID="61006396519639260" Name="am20mag762ball" Description="20 rd mag 7.62 x 51mm ball" Type="Ammo" />
+		<inventory ID="61006397626935516" Name="am20mag762balls" Description="20 rd mag 7.62 x 51mm ball special" Type="Ammo" />
+		<inventory ID="61006397106841820" Name="am20mag762fmj" Description="20 rd mag 7.62 x 51mm FMJ" Type="Ammo" />
+		<inventory ID="61006398214138076" Name="am20mag762fmjs" Description="20 rd mag 7.62 x 51mm FMJ special" Type="Ammo" />
+		<inventory ID="61006653345261788" Name="am20mag762jhps" Description="20 rd mag 7.62 x 51mm JHP special" Type="Ammo" />
+		<inventory ID="61006392090454236" Name="am30mag556ball" Description="30 rd mag 5.56 x 45mm ball" Type="Ammo" />
+		<inventory ID="61006392660879580" Name="am30mag556fmj" Description="30 rd mag 5.56 x 45mm FMJ" Type="Ammo" />
+		<inventory ID="61006393214527708" Name="am30mag556jhp" Description="30 rd mag 5.56 x 45mm JHP" Type="Ammo" />
+		<inventory ID="61006393852061916" Name="am30mag556sub" Description="30 rd mag 5.56 x 45mm subsonic" Type="Ammo" />
+		<inventory ID="61006656281274588" Name="am30mag58ball" Description="30 rd mag 5.8 x 42mm ball" Type="Ammo" />
+		<inventory ID="61006663512254684" Name="am30mag58fmj" Description="30 rd mag 5.8 x 42mm FMJ" Type="Ammo" />
+		<inventory ID="61006667538786524" Name="am30mag76ball" Description="30 rd mag 7.62 x 39mm ball" Type="Ammo" />
+		<inventory ID="61006670055368924" Name="am30mag76fmj" Description="30 rd mag 7.62 x 39mm FMJ" Type="Ammo" />
+		<inventory ID="61006384708479196" Name="am30mag9ball" Description="30 rd mag 9 x 19mm ball" Type="Ammo" />
+		<inventory ID="61006385564117212" Name="am30mag9fmj" Description="30 rd mag 9 x 19mm FMJ" Type="Ammo" />
+		<inventory ID="61006386251983068" Name="am30mag9jhp" Description="30 rd mag 9 x 19mm JHP" Type="Ammo" />
+		<inventory ID="61006387510274268" Name="am50mag58ball" Description="50 rd mag 5.8 x 21mm ball" Type="Ammo" />
+		<inventory ID="61006388047145180" Name="am50mag58fmj" Description="50 rd mag 5.8 x 21mm FMJ" Type="Ammo" />
+		<inventory ID="61006388684679388" Name="am50mag58jhp" Description="50 rd mag 5.8 x 21mm JHP" Type="Ammo" />
+		<inventory ID="61006675507964124" Name="am5mag108apds" Description="5 rd mag 12.7 x 108mm APDS" Type="Ammo" />
+		<inventory ID="61006676715923676" Name="am5mag108aphe" Description="5 rd mag 12.7 x 108mm APHE" Type="Ammo" />
+		<inventory ID="61006674903984348" Name="am5mag108fmj" Description="5 rd mag 12.7 x 108mm FMJ" Type="Ammo" />
+		<inventory ID="65094367931558122" Name="am6drum46he" Description="40 x 46mm drum HE (M386, M406) Grenade" Type="Ammo" />
+		<inventory ID="65094368736864490" Name="am6drum46hedp" Description="40 x 46mm drum HEDP (M433) Grenade" Type="Ammo" />
+		<inventory ID="61006666062391516" Name="am75mag58ball" Description="75 rd drum 5.8 x 42mm ball" Type="Ammo" />
+		<inventory ID="61006666733480156" Name="am75mag58fmj" Description="75 rd drum 5.8 x 42mm FMJ" Type="Ammo" />
+		<inventory ID="63975330439522524" Name="am75mag76ball" Description="75 rd drum 7.62 x 39mm ball" Type="Ammo" />
+		<inventory ID="64208465972193500" Name="am75mag76fmj" Description="75 rd drum 7.62 x 39mm FMJ" Type="Ammo" />
+		<inventory ID="61006382275782876" Name="am7clip45ball" Description="7 rd clip .45 Cal ball" Type="Ammo" />
+		<inventory ID="61006383164975324" Name="am7clip45fmj" Description="7 rd clip .45 Cal FMJ" Type="Ammo" />
+		<inventory ID="61006383886395612" Name="am7clip45jhp" Description="7 rd clip .45 Cal JHP" Type="Ammo" />
+		<inventory ID="63182238504216796" Name="ex01fraggren" Description="M67 Frag Grenade" Type="Ammo" />
+		<inventory ID="63182240517482716" Name="ex02smoke" Description="M18 Smoke Grenade" Type="Ammo" />
+		<inventory ID="66417472667936823" Name="ex09claymore" Description="M18 Claymore" Type="Ammo" />
+		<inventory ID="66746563653560154" Name="ex10apmine" Description="M14 Antipersonnel Mine" Type="Ammo" />
+		<inventory ID="66746564341426010" Name="ex11atmine" Description="M21 Antitank Mine" Type="Ammo" />
+		<inventory ID="66530714069526583" Name="ex13demchg" Description="Demolition Charge" Type="Ammo" />
+		<inventory ID="63876517738604414" Name="ex14fraggren" Description="Type 86 Frag Grenade" Type="Ammo" />
+		<inventory ID="63876520724948862" Name="ex15smoke" Description="RDG2 Smoke Grenade" Type="Ammo" />
+		<inventory ID="66417817506834487" Name="ex22claymore" Description="POMZ2 Claymore" Type="Ammo" />
+		<inventory ID="66746564760856410" Name="ex23apmine" Description="Type 72 Antipersonnel Mine" Type="Ammo" />
+		<inventory ID="66746564962183002" Name="ex24atmine" Description="TM62 Antitank Mine" Type="Ammo" />
+		<inventory ID="64207744362899676" Name="ex34hegren35" Description="35 x 32mm HE Grenade" Type="Ammo" />
+		<inventory ID="64677227092797660" Name="ex35hedpgren35" Description="35 x 32mm HEDP Grenade" Type="Ammo" />
+		<inventory ID="62863951233837276" Name="ex36uhegren40" Description="40 x 46mm HE Grenade" Type="Ammo" />
+		<inventory ID="64687918208018652" Name="ex37uhedpgren40" Description="40 x 46mm HEDP Grenade" Type="Ammo" />
+		<inventory ID="63138753392961756" Name="ex49javelin" Description="FGM-148 Javelin missile" Type="Ammo" />
+		<inventory ID="65397222191163447" Name="ex67queenbee" Description="120mm HE rocket" Type="Ammo" />
+		<inventory ID="65397246266468407" Name="ex67queenheat" Description="120mm HEAT rocket" Type="Ammo" />
+		<inventory ID="65397051336714295" Name="ex68smawheat" Description="83mm HEAT rocket" Type="Ammo" />
+		<inventory ID="65397080461961271" Name="ex69smawhef" Description="83mm HEF rocket" Type="Ammo" />
+		<inventory ID="65618957462694122" Name="ex72fim92a" Description="FIM-92A missile" Type="Ammo" />
+		<inventory ID="66400780738128046" Name="ex73qw2sam" Description="QW-2 Vanguard 2 missile" Type="Ammo" />
+		<inventory ID="66381298454784060" Name="ex80irstrobe" Description="IR Strobe Grenade" Type="Ammo" />
+	</ammo>
+	<weapon>
+		<inventory ID="62048110584031452" Name="hw01javelin" Description="FGM-148 Anti-Tank Missile CLU" Type="Weapon" />
+		<inventory ID="62048112530188508" Name="hw03smaw" Description="SMAW 83mm Rocket Launcher" Type="Weapon" />
+		<inventory ID="65396643457953300" Name="hw06pf98" Description="PF98 120mm Rocket Launcher" Type="Weapon" />
+		<inventory ID="62048119341738204" Name="hw10fim92a" Description="FIM-92A Anti Aircraft Missile Launcher" Type="Weapon" />
+		<inventory ID="62048120834910428" Name="hw11qw2" Description="QW-2 Anti Aircraft Missile" Type="Weapon" />
+		<inventory ID="60311596158707934" Name="m16a4sacog" Description="M16A4S ACOG Assault Rifle (Semi working)" Type="Weapon" />
+		<inventory ID="60311596158707933" Name="m16a4seotech" Description="M16A4S CQB Assault Rifle (Semi working)" Type="Weapon" />
+		<inventory ID="60311506803255517" Name="m16a4sno" Description="M16A4S NO Assault Rifle (Semi working)" Type="Weapon" />
+		<inventory ID="60337337238055135" Name="m4a1cco" Description="M4A1CQB CCO Assault Rifle (Semi working)" Type="Weapon" />
+		<inventory ID="60337337238055134" Name="m4a1sacog" Description="M4A1S ACOG Assault Rifle (Semi working)" Type="Weapon" />
+		<inventory ID="60337337238055133" Name="m4a1seotech" Description="M4A1S CQB Assault Rifle (Semi working)" Type="Weapon" />
+		<inventory ID="60311601175095517" Name="m4a1sno" Description="M4A1S NO Assault Rifle (Semi working)" Type="Weapon" />
+		<inventory ID="60337349636417757" Name="mk16aeot" Description="Mk16 Mod 0 A CQB Assault Rifle (Semi working)" Type="Weapon" />
+		<inventory ID="60948135904569565" Name="mk48nols" Description="Mk48 Mod 0 NO LS Medium Machine Gun (Semi working)" Type="Weapon" />
+		<inventory ID="58818206906738837" Name="sa01qsz92" Description="QSZ92 Pistol" Type="Weapon" />
+		<inventory ID="58815945807784085" Name="sa02meusoc" Description="MEU (SOC) Pistol" Type="Weapon" />
+		<inventory ID="60948072788682972" Name="sa03mp5a4" Description="MP5A4 Sub-Machine Gun" Type="Weapon" />
+		<inventory ID="60948074852280540" Name="sa04mp5a4no" Description="MP5A4CQB CCO Sub-Machine Gun" Type="Weapon" />
+		<inventory ID="60948076395784412" Name="sa05mp5a5" Description="MP5A4CQB Sub-Machine Gun" Type="Weapon" />
+		<inventory ID="60948088341162204" Name="sa07qcw05" Description="QCQ-05 Sub-Machine Gun" Type="Weapon" />
+		<inventory ID="60948089817557212" Name="sa08qcw05a" Description="QCQ-05M Sub-Machine Gun" Type="Weapon" />
+		<inventory ID="60311491686983900" Name="sa12m16a4" Description="Infantry M16A4 Assault Rifle" Type="Weapon" />
+		<inventory ID="60311503162599644" Name="sa13m16a4cqb" Description="Infantry M16A4CQB Assault Rifle" Type="Weapon" />
+		<inventory ID="60311503665916124" Name="sa14m16a4m" Description="M16A4M Assault Rifle" Type="Weapon" />
+		<inventory ID="60948100370426076" Name="sa15m16a4a" Description="M16A4A Assault Rifle" Type="Weapon" />
+		<inventory ID="60311506803255516" Name="sa16m16a4no" Description="M16A4NO Assault Rifle" Type="Weapon" />
+		<inventory ID="60311596158707932" Name="sa17m16a4s" Description="M16A4S Assault Rifle" Type="Weapon" />
+		<inventory ID="60337337238055132" Name="sa18m4a1" Description="M4A1 Assault Rifle" Type="Weapon" />
+		<inventory ID="60311599077943516" Name="sa19m4a1cqb" Description="M4A1CQB Assault Rifle" Type="Weapon" />
+		<inventory ID="60311600134908124" Name="sa20m4a1m" Description="M4A1M Assault Rifle" Type="Weapon" />
+		<inventory ID="60948107198752988" Name="sa21m4a1a" Description="M4A1A Assault Rifle" Type="Weapon" />
+		<inventory ID="60311601175095516" Name="sa22m4a1no" Description="M4A1NO Assault Rifle" Type="Weapon" />
+		<inventory ID="60311601980401884" Name="sa23m4a1s" Description="M4A1S Assault Rifle" Type="Weapon" />
+		<inventory ID="58818535639509141" Name="sa24mk16" Description="Mk16 Mod 0 Assault Rifle" Type="Weapon" />
+		<inventory ID="60311603792341212" Name="sa25mk17" Description="Mk17 Mod 0 Assault Rifle" Type="Weapon" />
+		<inventory ID="60311604664756444" Name="sa26mk16cqb" Description="Mk16 Mod 0 S CQB Assault Rifle" Type="Weapon" />
+		<inventory ID="60311606594136284" Name="sa27mk17m" Description="Mk17 Mod 0 M Assault Rifle" Type="Weapon" />
+		<inventory ID="60337349636417756" Name="sa28mk16a" Description="Mk16 Mod 0 A Assault Rifle" Type="Weapon" />
+		<inventory ID="60311611375642844" Name="sa29mk17no" Description="Mk17 Mod 0 NO Assault Rifle" Type="Weapon" />
+		<inventory ID="60311612315166940" Name="sa30mk16s" Description="Mk16 Mod 0 S Assault Rifle" Type="Weapon" />
+		<inventory ID="58818309147093141" Name="sa31qbz95" Description="QBZ95 Assault Rifle" Type="Weapon" />
+		<inventory ID="60948112315803868" Name="sa32qbz95m" Description="QBZ95M Assault Rifle" Type="Weapon" />
+		<inventory ID="60948115537029340" Name="sa33qbz95a" Description="QBZ95A Assault Rifle" Type="Weapon" />
+		<inventory ID="59627624511308290" Name="sa34type811" Description="Type 81-1 Assault Rifle" Type="Weapon" />
+		<inventory ID="60311628991719644" Name="sa35type811m" Description="Type 81-1M Assault Rifle" Type="Weapon" />
+		<inventory ID="60948120603748572" Name="sa36type811a" Description="Type 81-1A Assault Rifle" Type="Weapon" />
+		<inventory ID="60948123741087964" Name="sa37m249" Description="M249 Light Machine Gun" Type="Weapon" />
+		<inventory ID="60948126626769116" Name="sa38qbb95" Description="QBB95 Light Machine Gun" Type="Weapon" />
+		<inventory ID="60948128975579356" Name="sa39m240" Description="Infantry M240G Medium Machine Gun" Type="Weapon" />
+		<inventory ID="60948130149984476" Name="sa40mk48" Description="Mk48 Mod 0 Medium Machine Gun" Type="Weapon" />
+		<inventory ID="60948131659933916" Name="sa41mk48cqb" Description="Mk48 Mod 0 CQB Medium Machine Gun" Type="Weapon" />
+		<inventory ID="60948132985333980" Name="sa42mk48m" Description="Mk48 Mod 0 M Medium Machine Gun" Type="Weapon" />
+		<inventory ID="60948134428174556" Name="sa43mk48a" Description="Mk48 Mod 0 A Medium Machine Gun" Type="Weapon" />
+		<inventory ID="60948135904569564" Name="sa44mk48no" Description="Mk48 Mod 0 NO Medium Machine Gun" Type="Weapon" />
+		<inventory ID="60948137297078492" Name="sa45type67ii" Description="Infantry Type 67-II Medium Machine Gun" Type="Weapon" />
+		<inventory ID="60948138874136796" Name="sa51m32" Description="M32 Multiple Grenade Launcher" Type="Weapon" />
+		<inventory ID="60948148336486620" Name="sa53m21" Description="M21 Sniper Rifle" Type="Weapon" />
+		<inventory ID="60948146692319452" Name="sa54qbu88" Description="QBU88 Sniper Rifle" Type="Weapon" />
+		<inventory ID="60311630048684252" Name="sa55m107" Description="M82 Anti Material Rifle" Type="Weapon" />
+		<inventory ID="67965202853312672" Name="sa56m107no" Description="M82 Night Ops Anti Material Rifle" Type="Weapon" />
+		<inventory ID="60311631743183068" Name="sa57m99" Description="M99 Anti Material Rifle" Type="Weapon" />
+		<inventory ID="65269231889967338" Name="sa65qbz95no" Description="QBZ95 Night Ops" Type="Weapon" />
+		<inventory ID="65269242694494442" Name="sa66type811no" Description="Type 81-1 Night Ops" Type="Weapon" />
+		<inventory ID="64760248371013694" Name="scrumRifle" Description="Infantry M16A4CQB CCO Assault Rifle" Type="Weapon" />
+	</weapon>
+</inventories>
