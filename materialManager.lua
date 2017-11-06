@@ -7,7 +7,7 @@ end
 function onDataReady()
 	data = EDX["dataManager"].GetOrCreate(SCRIPT_NAME)
 	if EDX["dataManager"].IsFirstRun() == true then
-        data["materialMarkerSetName"] = "materialSet"
+        data["materialMarkerSetName"] = "materialMkSet"
         data["materialMarkers"] = { }
         data["materialSets"] = { --all sets here
             
