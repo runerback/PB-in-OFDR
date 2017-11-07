@@ -24,9 +24,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="materialMarkerHelper.lua" />
     <Compile Include="damageManager.lua" />
+    <Compile Include="jumperManager.lua" />
     <Compile Include="logger.lua" />
-    <Compile Include="parachute2.lua" />
     <Compile Include="securityZone.lua" />
     <Compile Include="strikeZone.lua" />
     <Compile Include="dataManager.lua" />
