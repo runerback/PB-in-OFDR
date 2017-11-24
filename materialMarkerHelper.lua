@@ -37,19 +37,30 @@ function onDataReady()
 			name = "",
 			ready = false
 		}
+		data["cornerIndexes"] = {
+			[1] = 6,
+			[2] = 5,
+			[3] = 4,
+			[4] = 7,
+			[6] = 3,
+			[7] = 8,
+			[8] = 1,
+			[9] = 2
+		}
 		data["sync"] = {
 			markerChanged = false,
-			cameraCorner = 0
+			cameraCorner = -1
 		}
 		data["settings"] = { --camera settings
-			height = 1, --camera distance to marker in vertical
-			offset = 1	--camera distance to marker in horizontal
+			height = .6, --camera distance to marker in vertical
+			offset = 10	--camera distance to marker in horizontal
 		}
 		local processor = {
 			name = "effectTaskProcessor",
 			id = -1,
-			interval = 6000,
-			task = ""
+			interval = 9000,
+			task = "",
+			running = false
 		}
 		processor.id = EDX:serialTimer(processor.name, -1, processor)
 		data["processor"] = processor
@@ -63,9 +74,16 @@ function log(message)
     EDX["logger"].log("[materialMarkerHelper] "..message)
 end
 
-function effectTaskProcessor(timerID, processor)
-	OFP:doParticleEffect("effectName", processor.task)
+function effectTaskProcessor(processor, timerID)
+	OFP:doParticleEffect("X_MSC_ILL_Master1", processor.task)
 	EDX:setTimer(timerID, processor.interval)
+end
+
+function scheduleProcessor()
+	local processor = data["processor"]
+	if processor.running == false then
+		EDX:setTimer(processor.id, processor.interval)
+	end
 end
 
 function onKeyPress( key)
@@ -74,13 +92,7 @@ function onKeyPress( key)
 		if id == 5 then
 			nextMarker()
 		elseif id > 0 then
-			local corner
-			if id > 4 then
-				corner = id - 1
-			else
-				corner = id
-			end
-			changeCamera(corner)
+			changeCamera(data["cornerIndexes"][id])
 		else
 			logCurrentMarker()
 		end
@@ -88,19 +100,19 @@ function onKeyPress( key)
 end
 
 function nextMarker()
-	log('next marker')
+	--log('next marker')
     local currentMarker = data["currentMarker"]
 	currentMarker.ready = false
     local nextIndex = currentMarker.index+1
     local nextMarker = data["markers"][nextIndex]
     if nextMarker then
+    	currentMarker.index = nextIndex
         currentMarker.name = nextMarker
         data["processor"].task = nextMarker
-        OFP:selectCamera(nextMarker)
+        --OFP:selectCamera(nextMarker) not work
 		currentMarker.ready = true
 		data["sync"].markerChanged = true
 		data["camera"].ready = true
-		log('camera should change')
     else
         EDX:deleteTimer(data["processor"].id)
         log("all markers are travelled")
@@ -121,68 +133,58 @@ function travelEnd(timerID)
 end
 
 function changeCamera( corner) --each corner means 45 degrees, from 0 to 7
-	log('changeCamera - '..corner)
+	--log('changeCamera - '..corner)
 	if data["currentMarker"].ready then
-		log('1')
 		if data["sync"].markerChanged then
 			data["sync"].markerChanged = false
 			data["sync"].cameraCorner = -1
-			log('2')
 		else
-			log('3')
 			if corner == data["sync"].cameraCorner then
 				return
 			else
-				log('4')
 				data["sync"].cameraCorner = corner
 			end
 		end
-		log('5')
 		local camera = data["camera"]
 		if camera.ready then
-			log('6')
 			local nextSet = camera.setName[corner]
 			if nextSet then
-				log('7')
 				local marker = data["currentMarker"].name
-				log('8')
 				
 				local mx, my, mz = OFP:getPosition(marker)
 				local dy = data["settings"].height
 				
 				--direction need check
-				log('9')
-				local dir = corner * 45
+				local dir = (corner - 1) * 45
+				--log("direction - "..dir)
 				local offset = data["settings"].offset
-				local dx = math.cos(math.rad(dir)) * offset
-				local dz = math.sin(math.rad(dir)) * offset
+				local dx = math.sin(math.rad(dir)) * offset
+				local dz = math.cos(math.rad(dir)) * offset
 				
-				log('10')
 				camera.ready = false
-				camera.setID = OFP:spawnEntitySetAtLocation(nextSet, mx + dx, my + dy, mz - dz)
-				log('11')
+				--camera.setID = OFP:spawnEntitySetAtLocation(nextSet, mx + dx, my + dy, mz - dz)
+				camera.setID = OFP:spawnEntitySetAtLocation(nextSet, mx - dx, my + dy, mz + dz)
 			end
 		end
 	end
 end
 
 function onCameraReady()
-	log('camera ready')
+	--log('camera ready')
 	local camera = data["camera"]
 	if camera.pSetID >= 0 then
 		OFP:destroyEntitySet(camera.pSetID)
 		camera.pSetID = camera.setID
 		OFP:selectCamera(camera.name)
 		camera.ready = true
-		log('camera should change')
 	else
 		camera.pSetID = camera.setID
 	end
 end
 
 function onMarkersReady()
-	log("markers ready")
 	nextMarker()
+	--scheduleProcessor()  just directly moving ammo crate
 end
 
 function checkCamera(setID, entities)
